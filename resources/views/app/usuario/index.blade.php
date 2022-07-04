@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="novo_usuario" class="form-label">Nome Usuário</label>
-                            <input type="text" class="form-control form-control" name="nome_usuario" id="novo_usuario" placeholder="John Doe">
+                            <input type="text" class="form-control" name="nome_usuario" id="novo_usuario" placeholder="Fulano">
                             @error('nome_usuario')
                                 <small class="text-danger fw-bold">{{$message}}</small>   
                             @enderror

@@ -70,7 +70,7 @@
   <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Transações Recentes</h5>
+        <h5 class="card-edit m-0 me-2">Transações Recentes</h5>
       </div>
       <div class="card-body">
 
@@ -85,7 +85,7 @@
                     <small class="text-muted">{{$gasto->descricao_gasto}}</small>
                   </td>
                   <td class="col-2">
-                    <span class="text-muted">{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d m Y')}}</span>
+                    <span class="text-muted">{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</span>
                   </td>
                   <td class="col-2">
                     @if($gasto->forma_de_pagamento == 1)
@@ -181,7 +181,7 @@
   <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-title m-0 me-2">Entradas Recentes</h5>
+        <h5 class="card-edit m-0 me-2">Entradas Recentes</h5>
       </div>
       <div class="card-body">
 
@@ -193,7 +193,7 @@
                 <tr>
                   <td class="text-left col-6"><strong>{{$entrada->descricao_entrada}}</strong></td>
                   <td class="col-2">
-                    <span class="text-muted">{{Carbon\Carbon::parse($entrada->data_da_entrada)->format('d m Y')}}</span>
+                    <span class="text-muted">{{Carbon\Carbon::parse($entrada->data_da_entrada)->format('d/m/Y')}}</span>
                   </td>
                   <td class="col-2">
                     @if($entrada->forma_da_entrada == 1)
