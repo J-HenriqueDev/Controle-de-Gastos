@@ -43,9 +43,8 @@
                             <label for="valor" class="form-label">Valor Gasto</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text">R$</span>
-                                <input type="number" step="0.01" name="quantity" min="0.01" class="form-control" name="valor_do_gasto" id="valor"
-                                {{-- <input type="number" class="form-control" name="valor_do_gasto" id="valor" --}}
-                                    placeholder="21,90">
+                                <input type="number" step="0.01" min="0.01" class="form-control" name="valor_do_gasto" id="valor"
+                                    placeholder="21,90" required>
 
                                 @error('valor_do_gasto')
                                 <small class="text-danger fw-bold">{{$message}}</small>
@@ -56,7 +55,7 @@
                             {{-- <div class="container"> --}}
                             <label for="data" class="form-label">Data do Gasto</label>
                             <div class="input-group input-group-merge">
-                                <input type="date" class="form-control" name="data_do_gasto" id="data">
+                                <input type="date" class="form-control" name="data_do_gasto" id="data" value="<?php echo date('Y-m-d'); ?>">
 
                                 @error('data_do_gasto')
                                 <small class="text-danger fw-bold">{{$message}}</small>
@@ -87,7 +86,11 @@
                         <div class="col-sm-6">
                             <label for="descricao" class="form-label">Descrição do Gasto</label>
                             <textarea class="form-control" name="descricao_gasto" id="descricao" rows="4"
-                                placeholder="Pagamento do boleto da Faculdade"></textarea>
+                                placeholder="Pagamento do boleto da Faculdade" required></textarea>
+
+                            <div class="invalid-feedback">
+                                Por favor, escolha um nome de usuário.
+                            </div>    
                             @error('descricao_gasto')
                             <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror
@@ -103,35 +106,47 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table responsive-table">
-                    <thead>
-                        <tr>
-                            <th>Usuário</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                            <th>Data</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($gastos as $gasto)
-                        <tr>
-                            <td>{{$gasto->usuario->nome_usuario}}</td>
-                            <td>{{$gasto->descricao_gasto}}</td>
-                            <td>R$ {{str_replace('.', ',', $gasto->valor_do_gasto)}}</td>
-                            <td>{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</td>
-                            <td>
-                                <a class="text-danger" href="{{route('gastos.destroy', $gasto->id)}}">Excluir</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+  <div class="col-12 mb-4">
+    <div class="card h-100">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="card-edit m-0 me-2">Gastos Recentes</h5>
+      </div>
+      <div class="card-body">
+
+        <div class="table-responsive text-nowrap">
+          <table class="table table-borderless">
+
+            @foreach ($gastos as $gasto)
+              <tbody>
+                <tr>
+                  <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
+                  <td class="col-4">
+                    <small class="text-muted">{{$gasto->descricao_gasto}}</small>
+                  </td>
+                  <td class="col-2">
+                    <span class="text-muted">{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</span>
+                  </td>
+                  <td class="col-2">
+                    @if($gasto->forma_de_pagamento == 1)
+                      <span class="badge bg-label-primary me-1">Dinheiro</span>
+                    @elseif($gasto->forma_de_pagamento == 2)
+                      <span class="badge bg-label-danger me-1">Crédito</span>
+                    @else
+                      <span class="badge bg-label-info me-1">Débito</span>
+                    @endif
+                  </td>
+                  <td class="align-right fw-bold">
+                    <span class="text-success">R$</span>
+                    <span class="mb-0">{{str_replace('.', ',', $gasto->valor_do_gasto)}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            @endforeach
+
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 @endsection

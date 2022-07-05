@@ -3966,6 +3966,11 @@ fieldset:disabled .btn {
     margin-bottom: 0.875rem;
 }
 
+.card-edit {
+    font-family: "Marker Felt", fantasy;
+    font-size: 30px;
+}
+
 .card-subtitle {
     margin-top: -0.4375rem;
     margin-bottom: 0;

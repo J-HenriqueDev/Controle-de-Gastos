@@ -22,7 +22,7 @@ class GastosController extends Controller
 
     public function Store(Request $request) {
         $request->validate([
-
+        
         ]);
 
         $valor = str_replace(',', '.', $request->valor_do_gasto);
