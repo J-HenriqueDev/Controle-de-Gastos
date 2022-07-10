@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Entradas;
+use App\Models\Gastos;
 
 use Carbon\Carbon;
 
@@ -13,7 +14,14 @@ class EntradasController extends Controller
     public function Index() {
         $entradas = Entradas::orderBy('data_da_entrada', 'DESC')->get();
 
-        return view('app.entradas.index', compact('entradas'));
+         // Complemento da Navbar para mostrar o valor atual
+         $dia = date('d');
+         $mes = date('m');
+         $ano = date('Y');
+         $gastoMes = Gastos::where('mes_do_gasto', $mes)->sum('valor_do_gasto');
+         $entradaMes = Entradas::where('mes_da_entrada', $mes)->sum('valor_da_entrada');
+         $rendaMensal = $entradaMes - $gastoMes;
+        return view('app.entradas.index', compact('entradas','rendaMensal'));
     }
 
     public function Store(Request $request) {
@@ -32,7 +40,7 @@ class EntradasController extends Controller
             'mes_da_entrada' => Carbon::parse($request->data_da_entrada)->format('m'),
             'ano_da_entrada' => Carbon::parse($request->data_da_entrada)->format('Y'),
             'created_at' => Carbon::now()
-        ]); 
+        ]);
 
         $noti = [
             'message' => 'Gasto inserido com sucesso!',
