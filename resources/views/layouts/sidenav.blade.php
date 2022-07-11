@@ -49,7 +49,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Config Sistema</span>
         </li>
-        
+
         <li class="menu-item">
             <a href="{{route('usuario.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
@@ -62,7 +62,37 @@
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categoria de Gastos</div>
             </a>
+
         </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Site</span>
+        </li>
+        @auth
+        <li class="menu-item">
+            <form action="{{route('logout')}}" class="menu-link" method="POST">
+                @csrf
+                <i class="bx-right-arro"></i>
+                <button class="btn btn-danger">Sair</button>
+            </a>
+        </li>
+        @endauth
+{{--
+        <li class="menu-item">
+            <a href="{{route('login')}}" class="menu-link">
+                <i class="bx-right-arro"></i>
+                <div data-i18n="Authentications">Entrar</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{route('categoria.gastos.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Criar conta </div>
+            </a>
+
+        </li> --}}
+
 
     </ul>
 </aside>

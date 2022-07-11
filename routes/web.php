@@ -18,6 +18,7 @@ use App\Http\Controllers\EntradasController;
 
 
 // Home
+Route::middleware(['auth'])->group(function ()  {
 Route::get('/', [HomeController::class, 'Home'])->name('home');
 
 // Usuario
@@ -39,3 +40,6 @@ Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->name('ga
 Route::get('/entradas', [EntradasController::class, 'Index'])->name('entradas.index');
 Route::post('/entradas/store', [EntradasController::class, 'Store'])->name('entradas.store');
 Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->name('entradas.destroy');
+});
+
+require __DIR__.'/auth.php';
