@@ -7713,10 +7713,6 @@ button:focus {
     border: 0;
     border-radius: 0;
 }
-.nav-edit {
-    font-family: "Marker Felt", fantasy;
-    font-size: 21px;
-}
 
 .nav-tabs .nav-item .nav-link:hover,
 .nav-tabs .nav-item .nav-link:focus {
@@ -10848,12 +10844,6 @@ button.list-group-item-gray.active {
     color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
 }
 
-.success {
-    font-family: "Marker Felt", fantasy;
-    font-size: 21px;
-    --bs-text-opacity: 1;
-    color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
-}
 .text-info {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-info-rgb), var(--bs-text-opacity)) !important;
@@ -10868,14 +10858,6 @@ button.list-group-item-gray.active {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
 }
-
-.texto-verm {
-    font-family: "Marker Felt", fantasy;
-    font-size: 21px;
-    --bs-text-opacity: 1;
-    color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
-}
-
 
 .text-light {
     --bs-text-opacity: 1;
