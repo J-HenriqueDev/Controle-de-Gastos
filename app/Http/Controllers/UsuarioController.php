@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Usuarios;
+USE App\Models\Gastos;
+use App\Models\Entradas;
 
 use Carbon\Carbon;
 
@@ -12,13 +14,20 @@ class UsuarioController extends Controller
 {
     public function Index() {
         $usuarios = Usuarios::orderBy('created_at', 'ASC')->get();
-        return view('app.usuario.index', compact('usuarios'));
+        // Complemento da Navbar para mostrar o valor atual
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
+        $gastoMes = Gastos::where('mes_do_gasto', $mes)->sum('valor_do_gasto');
+        $entradaMes = Entradas::where('mes_da_entrada', $mes)->sum('valor_da_entrada');
+        $rendaMensal = $entradaMes - $gastoMes;
+        return view('app.usuario.index', compact('usuarios','rendaMensal'));
     }
 
     public function Store(Request $request) {
 
         $request->validate([
-            'nome_usuario' => 'required' 
+            'nome_usuario' => 'required'
         ], [
             'nome_usuario.required' => 'Insira um nome para este usuário!'
         ]);

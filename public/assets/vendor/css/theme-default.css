@@ -354,6 +354,10 @@ button.list-group-item-primary.active {
 .nav .nav-link:focus {
     color: #80ebce;
 }
+.nav-edit {
+    font-family: "Marker Felt", fantasy;
+    font-size: 21px;
+}
 
 .nav-pills .nav-link.active,
 .nav-pills .nav-link.active:hover,

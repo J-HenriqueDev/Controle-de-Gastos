@@ -39,12 +39,3 @@ Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->name('ga
 Route::get('/entradas', [EntradasController::class, 'Index'])->name('entradas.index');
 Route::post('/entradas/store', [EntradasController::class, 'Store'])->name('entradas.store');
 Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->name('entradas.destroy');
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

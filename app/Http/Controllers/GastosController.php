@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Usuarios;
 use App\Models\Gastos;
+use App\Models\Entradas;
 use App\Models\CategoriaGastos;
 
 use Carbon\Carbon;
@@ -17,12 +18,19 @@ class GastosController extends Controller
         $usuarios = Usuarios::orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGastos::orderBy('categoria_de_gastos', 'ASC')->get();
 
-        return view('app.gastos.index', compact('gastos', 'usuarios', 'categoriaGastos'));
+        // Complemento da Navbar para mostrar o valor atual
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
+        $gastoMes = Gastos::where('mes_do_gasto', $mes)->sum('valor_do_gasto');
+        $entradaMes = Entradas::where('mes_da_entrada', $mes)->sum('valor_da_entrada');
+        $rendaMensal = $entradaMes - $gastoMes;
+        return view('app.gastos.index', compact('gastos', 'usuarios', 'categoriaGastos',"rendaMensal"));
     }
 
     public function Store(Request $request) {
         $request->validate([
-        
+
         ]);
 
         $valor = str_replace(',', '.', $request->valor_do_gasto);
@@ -38,7 +46,7 @@ class GastosController extends Controller
             'mes_do_gasto' => Carbon::parse($request->data_do_gasto)->format('m'),
             'ano_do_gasto' => Carbon::parse($request->data_do_gasto)->format('Y'),
             'created_at' => Carbon::now()
-        ]); 
+        ]);
 
         $noti = [
             'message' => 'Gasto inserido com sucesso!',
@@ -55,6 +63,7 @@ class GastosController extends Controller
             'message' => 'Gasto removido com sucesso!',
             'alert-type' => 'error'
         ];
+
 
         return redirect()->back()->with($noti);
     }
