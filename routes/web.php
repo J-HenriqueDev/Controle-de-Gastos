@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 // Home
 use App\Http\Controllers\HomeController;
 
@@ -15,11 +16,27 @@ use App\Http\Controllers\CategoriaGastosController;
 // Entradas
 use App\Http\Controllers\EntradasController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('home');
+// })->middleware(['auth'])->name('home');
 
 // Home
-Route::middleware(['auth'])->group(function ()  {
-Route::get('/', [HomeController::class, 'Home'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'Home'])->middleware(['auth'])->name('home');
 
 // Usuario
 Route::get('/usuario', [UsuarioController::class, 'Index'])->name('usuario.index');
@@ -40,6 +57,5 @@ Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->name('ga
 Route::get('/entradas', [EntradasController::class, 'Index'])->name('entradas.index');
 Route::post('/entradas/store', [EntradasController::class, 'Store'])->name('entradas.store');
 Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->name('entradas.destroy');
-});
 
 require __DIR__.'/auth.php';
