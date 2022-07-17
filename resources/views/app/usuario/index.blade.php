@@ -4,17 +4,17 @@
 <div class="row">
     <div class="col-md-6">
         <div class="card mb-4">
-            
+
             <form action="{{route('usuario.store')}}" method="post">
                 @csrf
 
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <label for="novo_usuario" class="form-label">Nome Usuário</label>
-                            <input type="text" class="form-control" name="nome_usuario" id="novo_usuario" placeholder="Fulano">
+                            <label for="novo_usuario" class="form-label">Nome do Recebedor</label>
+                            <input type="text" class="form-control" name="nome_usuario" id="novo_usuario" placeholder="FlyNet">
                             @error('nome_usuario')
-                                <small class="text-danger fw-bold">{{$message}}</small>   
+                                <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <table class="table responsive-table">
                     <thead>
                         <tr>
-                            <th>Nome Usuário</th>
+                            <th>Recebedor</th>
                             <th>Data de Criação</th>
                             <th>Ações</th>
                         </tr>

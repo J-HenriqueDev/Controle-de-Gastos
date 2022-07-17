@@ -59,6 +59,8 @@
     font-size: var(--bs-root-font-size);
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
      :root {
         scroll-behavior: smooth;

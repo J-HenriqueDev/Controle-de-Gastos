@@ -53,7 +53,7 @@
         <li class="menu-item">
             <a href="{{route('usuario.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Novo Usuário</div>
+                <div data-i18n="Authentications">Novo Recebedor</div>
             </a>
         </li>
 
@@ -61,6 +61,18 @@
             <a href="{{route('categoria.gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categoria de Gastos</div>
+            </a>
+        </li>
+
+        <div class="dropdown-divider"></div>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Site</span>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{route('logout')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div data-i18n="Authentications">Sair</div>
             </a>
         </li>
 
