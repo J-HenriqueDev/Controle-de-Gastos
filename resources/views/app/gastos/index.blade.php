@@ -14,7 +14,7 @@
                             <div class="mb-3">
                                 <label for="usuario_id" class="form-label">Recebedor</label>
                                 <select id="usuario_id" name="usuario_id" class="form-select" required>
-                                    {{-- <option selected>Escolha um recebedor...</option disabled> --}}
+                                    <option value="" disabled selected>Escolha um recebedor...</option>
                                     @foreach ($usuarios as $usuario)
                                     <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}">
                                         {{$usuario->nome_usuario}}</option>
@@ -27,7 +27,7 @@
                             <div class="mb-3" requir>
                                 <label for="categoria_de_gastos_id" class="form-label">Categoria de Gasto</label>
                                 <select id="categoria_de_gastos_id" name="categoria_de_gastos_id" class="form-select" required>
-                                    {{-- <option hidden>Escolha uma categoria...</option> --}}
+                                    <option value="" disabled selected>Escolha uma categoria...</option>
                                     @foreach ($categoriaGastos as $categoria)
                                     <option value="{{$categoria->id}}" id="categoria_{{$categoria->id}}">
                                         {{$categoria->categoria_de_gastos}}</option>

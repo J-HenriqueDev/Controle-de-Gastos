@@ -39,23 +39,23 @@ Route::get('/', function () {
 Route::get('/dashboard', [HomeController::class, 'Home'])->middleware(['auth'])->name('home');
 
 // Usuario
-Route::get('/usuario', [UsuarioController::class, 'Index'])->name('usuario.index');
-Route::post('/usuario/store', [UsuarioController::class, 'Store'])->name('usuario.store');
-Route::get('/usuario/{usuario_id}', [UsuarioController::class, 'Destroy'])->name('usuario.destroy');
+Route::get('/usuario', [UsuarioController::class, 'Index'])->middleware(['auth'])->name('usuario.index');
+Route::post('/usuario/store', [UsuarioController::class, 'Store'])->middleware(['auth'])->name('usuario.store');
+Route::get('/usuario/{usuario_id}', [UsuarioController::class, 'Destroy'])->middleware(['auth'])->name('usuario.destroy');
 
 // Categoria de Gastos
-Route::get('/categoria/gastos', [CategoriaGastosController::class, 'Index'])->name('categoria.gastos.index');
-Route::post('/categoria/gastos/store', [CategoriaGastosController::class, 'Store'])->name('categoria.gastos.store');
-Route::get('/categoria/gastos/{categoria_id}', [CategoriaGastosController::class, 'Destroy'])->name('categoria.gastos.destroy');
+Route::get('/categoria/gastos', [CategoriaGastosController::class, 'Index'])->middleware(['auth'])->name('categoria.gastos.index');
+Route::post('/categoria/gastos/store', [CategoriaGastosController::class, 'Store'])->middleware(['auth'])->name('categoria.gastos.store');
+Route::get('/categoria/gastos/{categoria_id}', [CategoriaGastosController::class, 'Destroy'])->middleware(['auth'])->name('categoria.gastos.destroy');
 
 // Gastos
-Route::get('/gastos', [GastosController::class, 'Index'])->name('gastos.index');
-Route::post('/gastos/store', [GastosController::class, 'Store'])->name('gastos.store');
-Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->name('gastos.destroy');
+Route::get('/gastos', [GastosController::class, 'Index'])->middleware(['auth'])->name('gastos.index');
+Route::post('/gastos/store', [GastosController::class, 'Store'])->middleware(['auth'])->name('gastos.store');
+Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->middleware(['auth'])->name('gastos.destroy');
 
 // Entradas
-Route::get('/entradas', [EntradasController::class, 'Index'])->name('entradas.index');
-Route::post('/entradas/store', [EntradasController::class, 'Store'])->name('entradas.store');
-Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->name('entradas.destroy');
+Route::get('/entradas', [EntradasController::class, 'Index'])->middleware(['auth'])->name('entradas.index');
+Route::post('/entradas/store', [EntradasController::class, 'Store'])->middleware(['auth'])->name('entradas.store');
+Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->middleware(['auth'])->name('entradas.destroy');
 
 require __DIR__.'/auth.php';
