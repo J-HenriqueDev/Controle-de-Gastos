@@ -58,7 +58,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="{{route('categoria.gastos.index')}}" class="menu-link">
+            <a href="{{route('categoria-gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categoria de Gastos</div>
             </a>
@@ -72,7 +72,7 @@
         <li class="menu-item">
             <a href="{{route('logout')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-log-out"></i>
-                <div data-i18n="Authentications">Sair</div>
+                <div class="text-danger" data-i18n="Authentications">Sair</div>
             </a>
         </li>
 

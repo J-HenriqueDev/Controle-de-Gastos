@@ -7716,6 +7716,7 @@ button:focus {
     border-radius: 0;
 }
 .nav-edit {
+    color: #00060d;
     font-family: "Marker Felt", fantasy;
     font-size: 21px;
 }
