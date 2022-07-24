@@ -28,10 +28,15 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table responsive-table">
+    <div class="col-12 mb-4">
+      <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="card-edit m-0 me-2">Categorias existentes:</h5>
+        </div>
+        <div class="card-body">
+
+          <div class="table-responsive text-nowrap">
+            <table class="table">
                     <thead>
                         <tr>
                             <th>Categoria de Gasto</th>

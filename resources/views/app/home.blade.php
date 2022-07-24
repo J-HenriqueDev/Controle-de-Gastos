@@ -68,15 +68,15 @@
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="card-edit m-0 me-2">Transações Recentes</h5>
-      </div>
-      <div class="card-body">
+    </div>
+    <div class="card-body">
 
-        <div class="table-responsive text-nowrap">
-          <table class="table table-borderless">
+      <div class="table-responsive text-nowrap">
+        <table class="table table-striped">
 
-            @foreach ($gastos as $gasto)
-              <tbody>
-                <tr>
+          @foreach ($gastos as $gasto)
+            <tbody class="table-border-bottom-0">
+              <tr>
                   <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
                   <td class="col-4">
                     <small class="text-muted">{{$gasto->descricao_gasto}}</small>

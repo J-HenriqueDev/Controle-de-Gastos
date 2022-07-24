@@ -14,7 +14,8 @@
                             <label for="valor" class="form-label">Valor de Entrada</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text">R$</span>
-                                <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder="1.800" required>
+                                <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder ="1.800" step="0.01" min="0.01" required>
+                                {{-- <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder="1.800" required> --}}
                                 @error('valor_da_entrada')
                                     <small class="text-danger fw-bold">{{$message}}</small>
                                 @enderror
@@ -73,7 +74,7 @@
         <div class="card-body">
 
           <div class="table-responsive text-nowrap">
-            <table class="table table-borderless">
+            <table class="table">
                     <thead>
                         <tr>
                             <th>Valor da Entrada</th>

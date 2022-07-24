@@ -4,7 +4,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Sistema de Inventário</title>
+    <title>Controle de gastos</title>
 
     <meta name="description" content="" />
 
@@ -44,4 +44,4 @@
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="https://bgorcamento.herokuapp.com/assets/js/config.js"></script>
+    <script src="{{ asset('assets/js/config.js') }}"></script>

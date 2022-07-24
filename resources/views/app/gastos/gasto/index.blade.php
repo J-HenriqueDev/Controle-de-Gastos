@@ -42,8 +42,9 @@
                             <label for="valor" class="form-label">Valor Gasto</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text">R$</span>
-                                <input type="number" class="form-control" name="valor_do_gasto" id="valor"
-                                    placeholder="21,90" required>
+                                <input type="number" class="form-control" name="valor_do_gasto" id="valor" placeholder ="21.90" onkeyup="formataValor(this)" required>
+                                {{-- <input type="number" class="form-control" name="valor_do_gasto" id="valor" --}}
+                                    {{-- placeholder="21,90" required> --}}
 
                                 @error('valor_do_gasto')
                                 <small class="text-danger fw-bold">{{$message}}</small>
@@ -103,12 +104,12 @@
     <div class="col-12 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-          <h5 class="card-edit m-0 me-2">Transações Recentes</h5>
+          <h5 class="card-edit m-0 me-2">Transações Recentes:</h5>
         </div>
         <div class="card-body">
 
           <div class="table-responsive text-nowrap">
-            <table class="table table-borderless">
+            <table class="table">
                     <thead>
                         <tr>
                             <th>Recebedor</th>

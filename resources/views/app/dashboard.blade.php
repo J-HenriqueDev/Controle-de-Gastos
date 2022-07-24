@@ -67,16 +67,29 @@
   <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-edit m-0 me-2">Transações Recentes</h5>
-      </div>
-      <div class="card-body">
+        <h5 class="card-edit m-0 me-2">Transações Recentes:</h5>
+    </div>
 
-        <div class="table-responsive text-nowrap">
-          <table class="table table-borderless">
+    <div class="card-body">
 
-            @foreach ($gastos as $gasto)
-              <tbody>
+
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
                 <tr>
+                    <th>Recebedor</th>
+                    <th>Descrição</th>
+
+                    <th>Data</th>
+                    <th>Forma de pgto</th>
+                    <th>Valor</th>
+
+                </tr>
+            </thead>
+
+          @foreach ($gastos as $gasto)
+            <tbody class="table-border-bottom-0">
+              <tr>
                   <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
                   <td class="col-4">
                     <small class="text-muted">{{$gasto->descricao_gasto}}</small>
@@ -175,12 +188,21 @@
   <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-edit m-0 me-2">Entradas Recentes</h5>
+        <h5 class="card-edit m-0 me-2">Entradas Recentes:</h5>
       </div>
       <div class="card-body">
 
         <div class="table-responsive text-nowrap">
-          <table class="table table-borderless">
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>DESCRIÇÃO</th>
+                    <th>Data</th>
+                    <th>FORMA DE ENTRADA</th>
+                    <th>Valor</th>
+
+                </tr>
+            </thead>
 
             @foreach ($entradas as $entrada)
               <tbody>
