@@ -34,7 +34,6 @@
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }} "/>
-    {{-- <link rel="stylesheet" href="https://bgorcamento.herokuapp.com/assets/vendor/css/pages/page-auth.css" /> --}}
 
     {{-- Toast Notification --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
