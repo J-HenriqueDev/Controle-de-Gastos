@@ -116,11 +116,16 @@
             @endforeach
 
           </table>
+        <div class="pagination justify-content-center">
+            {!! $gastos->links() !!}
+        </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Cards Crédito/Dinheiro/Pix -->
 <div class="row mb-4">

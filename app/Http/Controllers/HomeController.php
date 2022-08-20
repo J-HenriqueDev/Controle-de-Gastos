@@ -26,7 +26,8 @@ class HomeController extends Controller
         $gastoCredito = Gasto::where('user_id', Auth::user()->id)->where('forma_de_pagamento', 2)->sum('valor_do_gasto');
         $gastoDebito = Gasto::where('user_id', Auth::user()->id)->where('forma_de_pagamento', 3)->sum('valor_do_gasto');
 
-        $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->limit(5)->get();
+        // $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->limit(5)->get();
+        $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5);
 
         // Entradas
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
