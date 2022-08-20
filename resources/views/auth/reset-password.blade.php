@@ -3,7 +3,7 @@
 @section('content_auth')
 <div class="card">
     <div class="card-body">
-        <h4 class="mb-2 text-center">Esquece a Senha? 🔒</h4>
+        <h4 class="mb-2 text-center">Esqueceu a Senha? 🔒</h4>
         <p class="mb-4 text-center">Insira seu e-mail e siga as instruções para recuperar sua senha</p>
 
         <form class="mb-3" method="POST" action="{{ route('password.update') }}">
