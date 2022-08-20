@@ -33,3 +33,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
