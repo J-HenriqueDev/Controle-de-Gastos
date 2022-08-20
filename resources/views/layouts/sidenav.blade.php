@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="/dashboard" class="app-brand-link">
             <i class="bx bx-calculator text-secondary fs-2"></i>
             <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: capitalize;">Gastos</span>
         </a>
@@ -49,18 +49,30 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Config Sistema</span>
         </li>
-        
+
         <li class="menu-item">
             <a href="{{route('usuario.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Novo Usuário</div>
+                <div data-i18n="Authentications">Novo Recebedor</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="{{route('categoria.gastos.index')}}" class="menu-link">
+            <a href="{{route('categoria-gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categoria de Gastos</div>
+            </a>
+        </li>
+
+        <div class="dropdown-divider"></div>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Site</span>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{route('logout')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div class="text-danger" data-i18n="Authentications">Sair</div>
             </a>
         </li>
 

@@ -9,33 +9,27 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
 
 // Gastos
-use App\Http\Controllers\GastosController;
-use App\Http\Controllers\CategoriaGastosController;
+use App\Http\Controllers\GastoController;
+use App\Http\Controllers\CategoriaGastoController;
 
 // Entradas
-use App\Http\Controllers\EntradasController;
+use App\Http\Controllers\EntradaController;
+
+use App\Http\Controllers\AuthController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'Home'])->name('home');
 
-// Home
-Route::get('/', [HomeController::class, 'Home'])->name('home');
+    Route::resource('/usuario', UsuarioController::class)->except('create', 'show');
+    Route::resource('/categoria-gastos', CategoriaGastoController::class)->except('create', 'show');
+    Route::resource('/gastos', GastoController::class)->except('create', 'show');
+    Route::resource('/entradas', EntradaController::class)->except('create', 'show');
 
-// Usuario
-Route::get('/usuario', [UsuarioController::class, 'Index'])->name('usuario.index');
-Route::post('/usuario/store', [UsuarioController::class, 'Store'])->name('usuario.store');
-Route::get('/usuario/{usuario_id}', [UsuarioController::class, 'Destroy'])->name('usuario.destroy');
 
-// Categoria de Gastos
-Route::get('/categoria/gastos', [CategoriaGastosController::class, 'Index'])->name('categoria.gastos.index');
-Route::post('/categoria/gastos/store', [CategoriaGastosController::class, 'Store'])->name('categoria.gastos.store');
-Route::get('/categoria/gastos/{categoria_id}', [CategoriaGastosController::class, 'Destroy'])->name('categoria.gastos.destroy');
-
-// Gastos
-Route::get('/gastos', [GastosController::class, 'Index'])->name('gastos.index');
-Route::post('/gastos/store', [GastosController::class, 'Store'])->name('gastos.store');
-Route::get('/gastos/{gasto_id}', [GastosController::class, 'Destroy'])->name('gastos.destroy');
-
-// Entradas
-Route::get('/entradas', [EntradasController::class, 'Index'])->name('entradas.index');
-Route::post('/entradas/store', [EntradasController::class, 'Store'])->name('entradas.store');
-Route::get('/entradas/{entrada_id}', [EntradasController::class, 'Destroy'])->name('entradas.destroy');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
