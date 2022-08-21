@@ -117,10 +117,10 @@
 
           </table>
         <div class="pagination justify-content-center">
-            {!! $gastos->links() !!}
+            {!! $gastos->appends(['entradas' => $entradas->currentPage()])->links() !!}
         </div>
         </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -233,8 +233,10 @@
             @endforeach
 
           </table>
-        </div>
       </div>
+    </div>
+    <div class="pagination justify-content-center">
+        {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
   </div>
 </div>
