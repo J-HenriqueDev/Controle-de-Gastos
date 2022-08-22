@@ -73,6 +73,11 @@
         </div>
         <div class="card-body">
 
+            @if (count($entradas) ==0)
+            <p>Nenhuma entrada recente encontrada.<p>
+
+            @else
+            
           <div class="table-responsive text-nowrap">
             <table class="table">
                     <thead>
@@ -105,6 +110,8 @@
                             </td>
                         </tr>
                         @endforeach
+                        @endif
+
                     </tbody>
                 </table>
             </div>
@@ -112,3 +119,4 @@
     </div>
 </div>
 @endsection
+

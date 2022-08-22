@@ -108,6 +108,11 @@
         </div>
         <div class="card-body">
 
+            @if (count($gastos) ==0)
+            <p>Nenhuma transação recente encontrada.<p>
+
+            @else
+
           <div class="table-responsive text-nowrap">
             <table class="table">
                     <thead>
@@ -143,6 +148,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

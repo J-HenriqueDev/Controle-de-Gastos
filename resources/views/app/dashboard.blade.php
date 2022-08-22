@@ -73,6 +73,11 @@
 
     <div class="card-body">
 
+    @if (count($gastos) ==0)
+    <p>Nenhuma transação recente encontrada.<p><a href="/gastos">Clique aqui para adicionar!</a>
+
+
+    @else
 
       <div class="table-responsive text-nowrap">
         <table class="table">
@@ -114,17 +119,18 @@
                 </tr>
               </tbody>
             @endforeach
+            @endif
+         </table>
 
-          </table>
         <div class="pagination justify-content-center">
             {!! $gastos->appends(['entradas' => $entradas->currentPage()])->links() !!}
         </div>
         </div>
-
       </div>
     </div>
   </div>
-</div>
+
+
 
 
 <!-- Cards Crédito/Dinheiro/Pix -->
@@ -198,41 +204,47 @@
       </div>
       <div class="card-body">
 
-        <div class="table-responsive text-nowrap">
-          <table class="table">
-            <thead>
-                <tr>
-                    <th>DESCRIÇÃO</th>
-                    <th>Data</th>
-                    <th>FORMA DE ENTRADA</th>
-                    <th>Valor</th>
+            @if (count($entradas) ==0)
+              <p>Nenhuma entrada recente encontrada.<p><a href="/entradas">Clique aqui para adicionar!</a>
 
-                </tr>
-            </thead>
 
-            @foreach ($entradas as $entrada)
-              <tbody>
-                <tr>
-                  <td class="text-left col-6"><strong>{{$entrada->descricao_entrada}}</strong></td>
-                  <td class="col-2">
-                    <span class="text-muted">{{Carbon\Carbon::parse($entrada->data_da_entrada)->format('d/m/Y')}}</span>
-                  </td>
-                  <td class="col-2">
-                    @if($entrada->forma_da_entrada == 1)
-                      <span class="badge bg-label-primary me-1">Dinheiro</span>
-                    @else
-                      <span class="badge bg-label-info me-1">Transferência</span>
-                    @endif
-                  </td>
-                  <td class="align-right fw-bold col-2">
-                    <span class="text-success">R$</span>
-                    <span class="mb-0">{{str_replace('.', ',', $entrada->valor_da_entrada)}}</span>
-                  </td>
-                </tr>
-              </tbody>
-            @endforeach
+            @else
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>DESCRIÇÃO</th>
+                          <th>Data</th>
+                          <th>FORMA DE ENTRADA</th>
+                          <th>Valor</th>
 
-          </table>
+                      </tr>
+                  </thead>
+
+                  @foreach ($entradas as $entrada)
+                    <tbody>
+                      <tr>
+                        <td class="text-left col-6"><strong>{{$entrada->descricao_entrada}}</strong></td>
+                        <td class="col-2">
+                          <span class="text-muted">{{Carbon\Carbon::parse($entrada->data_da_entrada)->format('d/m/Y')}}</span>
+                        </td>
+                        <td class="col-2">
+                          @if($entrada->forma_da_entrada == 1)
+                            <span class="badge bg-label-primary me-1">Dinheiro</span>
+                          @else
+                            <span class="badge bg-label-info me-1">Transferência</span>
+                          @endif
+                        </td>
+                        <td class="align-right fw-bold col-2">
+                          <span class="text-success">R$</span>
+                          <span class="mb-0">{{str_replace('.', ',', $entrada->valor_da_entrada)}}</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  @endforeach
+                  @endif
+                </table>
+
       </div>
     </div>
     <div class="pagination justify-content-center">
@@ -306,5 +318,9 @@
     </div>
   </div>
 </div>
+
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $gastoMes * $entradaMes/100; ?>%"></div>
+  </div>
 
 @endsection

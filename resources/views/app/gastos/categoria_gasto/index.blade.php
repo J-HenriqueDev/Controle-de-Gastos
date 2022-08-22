@@ -35,6 +35,11 @@
         </div>
         <div class="card-body">
 
+            @if (count($categorias) ==0)
+            <p>Nenhuma categoria registrada.<p>
+
+            @else
+
           <div class="table-responsive text-nowrap">
             <table class="table">
                     <thead>
@@ -65,6 +70,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

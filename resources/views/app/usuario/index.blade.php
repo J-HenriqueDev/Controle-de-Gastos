@@ -35,6 +35,11 @@
         </div>
         <div class="card-body">
 
+            @if (count($usuarios) ==0)
+            <p>Nenhum recebedor registrado.<p>
+
+            @else
+
           <div class="table-responsive text-nowrap">
             <table class="table">
                         <thead>
@@ -65,6 +70,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
