@@ -4,6 +4,7 @@
             <i class="bx bx-menu bx-sm"></i>
         </a>
     </div>
+    
 
     <div class="navbar-nav-right d-flex align-items-center gap-3" id="navbar-collapse">
 
@@ -16,6 +17,8 @@
             @else
                 <a class="p-2 texto-verm"> R$ {{str_replace('.', ',', $rendaMensal)}}</a>
             @endif
+
+
 
 
 

@@ -37,11 +37,13 @@ class HomeController extends Controller
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
 
+        $porcentagem = ($gastoMes / $entradaMes) * 100;
+
         return view('app.dashboard', compact(
             'gastoHoje', 'gastoMes', 'gastoAno',
             'gastoDinheiro', 'gastoCredito', 'gastoDebito',
             'gastos', 'entradas', 'rendaMensal',
-            'entradaMes', 'entradaAno'
+            'entradaMes', 'entradaAno','porcentagem'
         ));
     }
 }

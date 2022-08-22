@@ -3,6 +3,19 @@
 
 @section('content')
 
+<div class="col-12 mb-4">
+    <div class="card h-100">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <div class="card-body">
+          {{-- <div class="card-title d-flex align-items-start justify-content-between"> --}}
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%">50%</div>
+            </div>
+            </div>
+        </div>
+      </div>
+</div>
+
 <!-- Cards Diário/Mensal/Anual -->
 <div class="row mb-4">
   <!-- Diário -->
@@ -323,7 +336,7 @@
 </div>
 
 <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $gastoMes * $entradaMes/100; ?>%"></div>
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
   </div>
 
 @endsection
