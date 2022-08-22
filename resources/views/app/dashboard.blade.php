@@ -119,16 +119,18 @@
                 </tr>
               </tbody>
             @endforeach
-            @endif
+
          </table>
 
         <div class="pagination justify-content-center">
             {!! $gastos->appends(['entradas' => $entradas->currentPage()])->links() !!}
         </div>
         </div>
+        </div>
       </div>
     </div>
   </div>
+  @endif
 
 
 
@@ -245,6 +247,7 @@
                   @endif
                 </table>
 
+      </div>
       </div>
     </div>
     <div class="pagination justify-content-center">
