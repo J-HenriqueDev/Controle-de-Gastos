@@ -9,7 +9,7 @@
         <div class="card-body">
           {{-- <div class="card-title d-flex align-items-start justify-content-between"> --}}
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%">50%</div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
             </div>
         </div>
@@ -88,8 +88,10 @@
 
     @if (count($gastos) ==0)
     <p>Nenhuma transação recente encontrada.<p><a href="/gastos">Clique aqui para adicionar!</a>
-
-
+    </div>
+    </div>
+    </div>
+    </div>
     @else
 
       <div class="table-responsive text-nowrap">
@@ -223,7 +225,9 @@
               <p>Nenhuma entrada recente encontrada.<p><a href="/entradas">Clique aqui para adicionar!</a>
 
 
+
             @else
+
             <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead>
@@ -232,7 +236,6 @@
                           <th>Data</th>
                           <th>FORMA DE ENTRADA</th>
                           <th>Valor</th>
-
                       </tr>
                   </thead>
 
@@ -266,8 +269,9 @@
     <div class="pagination justify-content-center">
         {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
-  </div>
+
 </div>
+
 
 <!-- Cards Entrada -->
 <div class="row mb-4">
@@ -334,9 +338,5 @@
     </div>
   </div>
 </div>
-
-<div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
-  </div>
 
 @endsection

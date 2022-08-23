@@ -37,8 +37,23 @@ class HomeController extends Controller
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
 
-        $porcentagem = ($gastoMes / $entradaMes) * 100;
 
+
+        // if ($gastoMes == 0)
+
+
+        // $calculo = ($gastoMes / $entradaMes) * 100;
+        // $tipslastmonth == 0 ? 0 : ($sumOfTheOddsLastMonth / $tipslastmonth);
+        // $calculo == 0 ? 0 : ($gastoMes / $entradaMes);
+
+        if ($gastoMes and $entradaMes != 0)
+            // $tipslastmonth = $sumOfTheOddsLastMonth / $tipslastmonth;
+            $porcentagem = ($gastoMes / $entradaMes) * 100;
+        else
+            $porcentagem = 0;
+
+
+;
         return view('app.dashboard', compact(
             'gastoHoje', 'gastoMes', 'gastoAno',
             'gastoDinheiro', 'gastoCredito', 'gastoDebito',
