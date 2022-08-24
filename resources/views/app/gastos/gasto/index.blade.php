@@ -2,20 +2,23 @@
 
 @section('content')
 
-{{-- Falta de Usuarios --}}
+
+@if (count($usuarios) == 0)
 <div class="alert alert-danger alert-dismissible" role="alert">
-    This is a danger dismissible alert — check it out!
+    Nenhum recebedor foi encontrado em nosso banco de dados, por favor adicione um novo aqui.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
+    @endif
 
 
-  {{-- Falta de Categorias --}}
+
+  <!-- {{-- Falta de Categorias --}}
   <div class="alert alert-dark alert-dismissible mb-0" role="alert">
     This is a dark dismissible alert — check it out!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
-  </div>
+  </div> -->
 
 <div class="row">
     <div class="col-md-12">
