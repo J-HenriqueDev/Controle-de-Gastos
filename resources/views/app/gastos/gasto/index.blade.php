@@ -3,13 +3,23 @@
 @section('content')
 
 
-@if (count($usuarios) == 0)
+@if (count($usuarios) == 0 and count($categoriaGastos) == 0)
 <div class="alert alert-danger alert-dismissible" role="alert">
-    Nenhum recebedor foi encontrado em nosso banco de dados, por favor adicione um novo aqui.
+    É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
+    <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
+    <a href="/categoria-gasto">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
-    @endif
+    @elseif (count($usuarios) != 0 and count($categoriaGastos) == 0)
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        Por favor crie uma categoria para prosseguir com o registro de saida. Clique
+        <a href="/categoria-gastos">aqui</a>.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+      </div>
+
+      @endif
 
 
 
