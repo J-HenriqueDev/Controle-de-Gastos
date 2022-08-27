@@ -7,11 +7,28 @@
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div class="card-body">
-          {{-- <div class="card-title d-flex align-items-start justify-content-between"> --}}
+            @if ($porcentagem >= 60 )
+                <div class="alert alert-danger" role="alert">
+                    Alerta, <?php echo number_format((float)$porcentagem, 2, '.', '')?>% do valor inserido já foi utilizado!
+                  </div>
+            @endif
+
+
+            @if ($porcentagem >= 100)
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
+            </div>
+            </div>
+
+
+            @else
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
             </div>
+
+
+            @endif
         </div>
       </div>
 </div>

@@ -7,7 +7,7 @@
 <div class="alert alert-danger alert-dismissible" role="alert">
     É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
     <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
-    <a href="/categoria-gasto">aqui</a>.
+    <a href="/categoria-gastos">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
@@ -15,6 +15,14 @@
     <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma categoria para prosseguir com o registro de saida. Clique
         <a href="/categoria-gastos">aqui</a>.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+      </div>
+
+      @elseif (count($usuarios) == 0 and count($categoriaGastos) != 0)
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        Por favor crie uma recebedor para prosseguir com o registro de saida. Clique
+        <a href="/usuario">aqui</a>.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
       </div>
