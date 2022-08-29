@@ -45,6 +45,25 @@
             </a>
         </li>
 
+        {{-- RELATORIOS  --}}
+        <div class="dropdown-divider"></div>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">RELATÓRIOS</span>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{route('relatorios.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-plus"></i>
+                <div data-i18n="Layouts">Relatórios de Entradas</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{route('relatorios.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-check"></i>
+                <div data-i18n="Layouts">Relatórios de Saidas</div>
+            </a>
+        </li>
+
         <!-- DIVIDER :: Config Sistema -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Config Sistema</span>

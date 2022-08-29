@@ -16,6 +16,7 @@ use App\Http\Controllers\CategoriaGastoController;
 use App\Http\Controllers\EntradaController;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RelatorioController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('/categoria-gastos', CategoriaGastoController::class)->except('create', 'show');
     Route::resource('/gastos', GastoController::class)->except('create', 'show');
     Route::resource('/entradas', EntradaController::class)->except('create', 'show');
+    Route::resource('/relatorios',RelatorioController::class)->except('create','show','edit');
 
 
 
