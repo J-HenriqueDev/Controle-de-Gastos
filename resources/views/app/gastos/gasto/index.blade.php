@@ -30,22 +30,11 @@
       @endif
 
 
-
-  <!-- {{-- Falta de Categorias --}}
-  <div class="alert alert-dark alert-dismissible mb-0" role="alert">
-    This is a dark dismissible alert — check it out!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div> -->
-
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-4">
-
             <form action="{{route('gastos.store')}}" method="post">
                 @csrf
-
-
 
                 <div class="card-body">
                     <div class="row">
