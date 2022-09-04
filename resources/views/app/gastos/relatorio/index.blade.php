@@ -30,19 +30,11 @@
       @endif
 
 
-
-  <!-- {{-- Falta de Categorias --}}
-  <div class="alert alert-dark alert-dismissible mb-0" role="alert">
-    This is a dark dismissible alert — check it out!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div> -->
-
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-4">
 
-            <form action="{{route('gastos.store')}}" method="post">
+            <form action="{{route('relatorios.index')}}" method="GET">
                 @csrf
                 <div class="card-body">
                     <div class="row">
@@ -52,7 +44,7 @@
                                 <select id="usuario_id" name="usuario_id" class="form-select">
                                     <option value="" disabled selected>Escolha um recebedor...</option>
                                     @foreach ($usuarios as $usuario)
-                                    <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}">
+                                    <option value="{{$usuario->id}}" {{$usuario->id == $usuario_slc ? 'selected' : ""}} id="usuario_{{$usuario->id}}">
                                         {{$usuario->nome_usuario}}</option>
                                     @endforeach
                                 </select>
@@ -65,7 +57,7 @@
                                 <select id="categoria_de_gastos_id" name="categoria_de_gastos_id" class="form-select" >
                                     <option value="" disabled selected>Selecione uma Categoria</option>
                                     @foreach ($categoriaGastos as $categoria)
-                                    <option value="{{$categoria->id}}" id="categoria_{{$categoria->id}}">
+                                    <option value="{{$categoria->id}}"{{$categoria->id == $categoria_slc ? 'selected' : ""}} id="categoria_{{$categoria->id}}">
                                         {{$categoria->categoria_de_gastos}}</option>
                                     @endforeach
                                 </select>
@@ -77,9 +69,9 @@
                         <div class="col-sm">
                             <label for="data" class="form-label">Data Inicial</label>
                             <div class="input-group input-group-merge">
-                                <input type="date" class="form-control" name="data_do_gasto" id="data" value="<?php echo date('Y-m-d'); ?>">
+                                <input type="date" class="form-control" name="data_inicio" id="data" value="{{$data_inicio}}">
 
-                                @error('data_do_gasto')
+                                @error('data_inicio')
                                 <small class="text-danger fw-bold">{{$message}}</small>
                                 @enderror
                             </div>
@@ -87,9 +79,9 @@
                             <div class="col-sm">
                                 <label for="data" class="form-label">Data Final</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="date" class="form-control" name="data_do_gasto" id="data" value="<?php echo date('Y-m-d'); ?>">
+                                    <input type="date" class="form-control" name="data_final" id="data" value="{{$data_final}}">
 
-                                    @error('data_do_gasto')
+                                    @error('data_final')
                                     <small class="text-danger fw-bold">{{$message}}</small>
                                     @enderror
                                 </div>
@@ -98,7 +90,7 @@
                             <label for="descricao" class="form-label d-block">Forma de Pagamento</label>
                             <div class="form-check form-check-inline mt-3">
                                 <input class="form-check-input" type="radio" name="forma_de_pagamento" id="dinheiro"
-                                    value="1" checked>
+                                    value="1">
                                 <label class="form-check-label" for="dinheiro">Dinheiro</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -127,48 +119,52 @@
           <h5 class="card-edit m-0 me-2">Transações:</h5>
         </div>
         <div class="card-body">
-
             @if (count($gastos) == 0)
             <p>Nenhuma transação recente encontrada.<p>
 
             @else
 
-          <div class="table-responsive text-nowrap">
-            <table class="table">
+            <div class="table-responsive text-nowrap">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Recebedor</th>
                             <th>Descrição</th>
-                            <th>Valor</th>
+
                             <th>Data</th>
-                            <th class="col-2 text-center">Ações</th>
+                            <th>Forma de pgto</th>
+                            <th>Valor</th>
+
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($gastos as $gasto)
-                        <tr>
-                            <td>{{$gasto->usuario->nome_usuario}}</td>
-                            <td>{{$gasto->descricao_gasto}}</td>
-                            <td>R$ {{str_replace('.', ',', $gasto->valor_do_gasto)}}</td>
-                            <td>{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</td>
-                            <td class="d-flex justify-content-between text-center">
-                                <a type="button" href="{{route('gastos.edit', $gasto->id)}}">
-                                    <i class="bx bx-edit text-success fs-3"></i>
-                                </a>
 
-                                <form id="removeForm_{{$gasto->id}}" action="{{route('gastos.destroy', $gasto->id)}}"
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <a type="button" onclick="getElementById('removeForm_{{$gasto->id}}').submit()">
-                                        <i class="bx bx-block text-danger fs-3"></i>
-                                    </a>
-                                </form>
-                            </td>
+                  @foreach ($gastos as $gasto)
+                    <tbody class="table-border-bottom-0">
+                      <tr>
+                          <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
+                          <td class="col-4">
+                            <small class="text-muted">{{$gasto->descricao_gasto}}</small>
+                          </td>
+                          <td class="col-2">
+                            <span class="text-muted">{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</span>
+                          </td>
+                          <td class="col-2">
+                            @if($gasto->forma_de_pagamento == 1)
+                              <span class="badge bg-label-primary me-1">Dinheiro</span>
+                            @elseif($gasto->forma_de_pagamento == 2)
+                              <span class="badge bg-label-danger me-1">Crédito</span>
+                            @else
+                              <span class="badge bg-label-info me-1">Débito</span>
+                            @endif
+                          </td>
+                          <td class="align-right fw-bold">
+                            <span class="text-success">R$</span>
+                            <span class="mb-0">{{str_replace('.', ',', $gasto->valor_do_gasto)}}</span>
+                          </td>
                         </tr>
-                        @endforeach
-                        @endif
+                      </tbody>
+                    @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
