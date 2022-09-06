@@ -18,6 +18,8 @@ class RelatorioController extends Controller
      */
     public function index(Request $request){
         $data_inicio = request('data_inicio');
+        $hoje = Date('Y-m-d');
+        $Year = Date('');
         $data_final = request('data_final');
         $forma_pag = request('forma_de_pagamento');
         $categoria_slc = request('categoria_de_gastos_id');
@@ -36,6 +38,13 @@ class RelatorioController extends Controller
         }
         if ($data_inicio and $data_final){
             $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $data_final));
+        }
+
+        if ($data_final == NULL and $data_inicio){
+            $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
+        }
+        if ($data_inicio == NULL and $data_final){
+            $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
         }
             $gastos = $gastos->get();
 
