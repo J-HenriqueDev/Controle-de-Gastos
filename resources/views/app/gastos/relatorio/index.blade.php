@@ -35,7 +35,6 @@
         <div class="card mb-4">
 
             <form action="{{route('relatorios.index')}}" method="GET">
-                @csrf
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
@@ -106,7 +105,8 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-end">
-                    <button class="btn btn-md btn-primary fw-bold align-right">Pesquisar</button>
+                    <a href="{{route('relatorios.index')}}" class="btn btn-outline-primary">Exibir Todos</a><span class="espaco"></span>
+                    <button class="btn btn-md btn-primary fw-bold align-right" value="&nbsp">Pesquisar</button>
                 </div>
             </form>
         </div>
