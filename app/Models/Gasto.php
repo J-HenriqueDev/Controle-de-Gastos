@@ -13,5 +13,9 @@ class Gasto extends Model
 
     public function Usuario() {
         return $this->belongsTo(Usuario::class, 'usuario_id', 'id');
+        // return $this->belongsTo(CategoriaGasto::class, 'categoria_de_gastos_id', 'id');
+    }
+    public function Categoria() {
+        return $this->belongsTo(CategoriaGasto::class, 'categoria_de_gastos_id', 'id');
     }
 }

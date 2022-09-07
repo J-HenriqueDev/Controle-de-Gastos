@@ -7,14 +7,14 @@
 <div class="alert alert-danger alert-dismissible" role="alert">
     É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
     <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
-    <a href="/categoria-gastos">aqui</a>.
+    <a href="{{route('categoria-gastos.index')}}">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
     @elseif (count($usuarios) != 0 and count($categoriaGastos) == 0)
     <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma categoria para prosseguir com o registro de saida. Clique
-        <a href="/categoria-gastos">aqui</a>.
+        <a href="{{route("categoria-gastos.index")}}"">aqui</a>.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
       </div>
@@ -22,7 +22,7 @@
       @elseif (count($usuarios) == 0 and count($categoriaGastos) != 0)
       <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma recebedor para prosseguir com o registro de saida. Clique
-        <a href="/usuario">aqui</a>.
+        <a href="{{route('usuario.index')}}">aqui</a>.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
       </div>
@@ -112,6 +112,17 @@
         </div>
     </div>
 </div>
+<div class="col-12 mb-4">
+    <div class="card h-100">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <div class="card-body">
+            <div class="text-center">
+                <a href="/exportar" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Download via Excel</a>
+            </div>
+        </div>
+    </div>
+ </div>
+</div>
 <div class="row">
     <div class="col-12 mb-4">
       <div class="card h-100">
@@ -130,7 +141,7 @@
                         <tr>
                             <th>Recebedor</th>
                             <th>Descrição</th>
-
+                            <th>Categoria</th>
                             <th>Data</th>
                             <th>Forma de pgto</th>
                             <th>Valor</th>
@@ -141,9 +152,13 @@
                   @foreach ($gastos as $gasto)
                     <tbody class="table-border-bottom-0">
                       <tr>
-                          <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
-                          <td class="col-4">
+                          <td class="text-left col-2"><strong>{{$gasto->Usuario->nome_usuario}}</strong></td>
+                          <td class="col-3">
                             <small class="text-muted">{{$gasto->descricao_gasto}}</small>
+                          </td>
+                          <td class="col-3">
+                            <span class="badge bg-secondary me-1">{{$gasto->categoria->categoria_de_gastos}}</span>
+                            {{-- <dd>{{$gasto->Categoria}}</dd> --}}
                           </td>
                           <td class="col-2">
                             <span class="text-muted">{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</span>
