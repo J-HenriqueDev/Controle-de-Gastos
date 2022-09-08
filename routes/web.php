@@ -16,6 +16,7 @@ use App\Http\Controllers\CategoriaGastoController;
 use App\Http\Controllers\EntradaController;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Relatorio_entradaController;
 use App\Http\Controllers\RelatorioController;
 
 Route::get('/', function () {
@@ -31,6 +32,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('/gastos', GastoController::class)->except('create', 'show');
     Route::resource('/entradas', EntradaController::class)->except('create', 'show');
     Route::resource('/relatorios',RelatorioController::class)->except('create','show','edit');
+    // Route::resource('/relatorio_entrada', RelatorioController::class)->except('create','show','edit');
+    Route::resource('/relatorio_entrada', Relatorio_entradaController::class)->except('create','show','edit');
+
+
+
     Route::get('/exportar',[RelatorioController::class, 'export']);
 
 
