@@ -51,7 +51,6 @@
                             </div>
                             <div class="col-sm">
                                 <label for="data" class="form-label">Data Final</label>
-                                <dd>{{$data_final}}</dd>
                                 <div class="input-group input-group-merge">
                                     <input type="date" class="form-control" name="data_final" id="data" value="{{$data_final}}">
 
