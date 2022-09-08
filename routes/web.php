@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('/gastos', GastoController::class)->except('create', 'show');
     Route::resource('/entradas', EntradaController::class)->except('create', 'show');
     Route::resource('/relatorios',RelatorioController::class)->except('create','show','edit');
+    Route::get('/exportar',[RelatorioController::class, 'export']);
 
 
 

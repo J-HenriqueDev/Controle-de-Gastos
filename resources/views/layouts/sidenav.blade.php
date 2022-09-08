@@ -19,7 +19,7 @@
         </li>
 
         <!-- Home -->
-        <li class="menu-item active">
+        <li class="menu-item {{ Request::is('dashboard') ? 'active': '' }}">
             <a href="{{route('home')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Home</div>
@@ -31,14 +31,14 @@
             <span class="menu-header-text">Cálculo</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('gastos') ? 'active': '' }}">
             <a href="{{route('gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Gastos</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('entradas') ? 'active': '' }}">
             <a href="{{route('entradas.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dollar"></i>
                 <div data-i18n="Layouts">Entradas</div>
@@ -51,13 +51,13 @@
             <span class="menu-header-text">RELATÓRIOS</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item ">
             <a href="{{route('relatorios.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-plus"></i>
                 <div data-i18n="Layouts">Relatórios de Entradas</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('relatorios') ? 'active': '' }}">
             <a href="{{route('relatorios.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-list-check"></i>
                 <div data-i18n="Layouts">Relatórios de Saidas</div>
@@ -69,14 +69,14 @@
             <span class="menu-header-text">Config Sistema</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('usuario') ? 'active': '' }}">
             <a href="{{route('usuario.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Novo Recebedor</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('categoria-gastos') ? 'active': '' }}">
             <a href="{{route('categoria-gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categoria de Gastos</div>
