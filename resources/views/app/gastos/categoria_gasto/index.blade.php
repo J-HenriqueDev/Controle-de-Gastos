@@ -49,7 +49,7 @@
                             <th class="col-2 text-center">Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-border-bottom-0">
                         @foreach ($categorias as $categoria)
                             <tr>
                                 <td>{{$categoria->categoria_de_gastos}}</td>

@@ -49,7 +49,7 @@
                             <th class="col-2 text-center">Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-border-bottom-0">
                         @foreach ($usuarios as $usuario)
                             <tr>
                                 <td>{{$usuario->nome_usuario}}</td>

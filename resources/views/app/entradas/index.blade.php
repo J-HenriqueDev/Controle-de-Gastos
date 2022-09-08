@@ -77,7 +77,7 @@
             <p>Nenhuma entrada recente encontrada.<p>
 
             @else
-            
+
           <div class="table-responsive text-nowrap">
             <table class="table">
                     <thead>
@@ -88,7 +88,7 @@
                             <th class="col-2 text-center">Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-border-bottom-0">
                         @foreach ($entradas as $entrada)
                         <tr>
                             <td><strong class="text-success">R$</strong> <b>{{str_replace('.', ',', $entrada->valor_da_entrada)}}</b></td>

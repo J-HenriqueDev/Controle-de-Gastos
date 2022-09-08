@@ -257,7 +257,7 @@
                   </thead>
 
                   @foreach ($entradas as $entrada)
-                    <tbody>
+                  <tbody class="table-border-bottom-0">
                       <tr>
                         <td class="text-left col-6"><strong>{{$entrada->descricao_entrada}}</strong></td>
                         <td class="col-2">
