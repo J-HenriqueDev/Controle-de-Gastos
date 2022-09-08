@@ -35,12 +35,15 @@ class RelatorioController extends Controller
         if ($usuario_slc) {
             $gastos = Gasto::where('user_id', Auth::user()->id)->where('usuario_id', $usuario_slc);
         }
-        if ($usuario_slc and $categoria_slc)  {
-            $gastos = Gasto::where('user_id', Auth::user()->id)->where('usuario_id', $usuario_slc)->where('categoria_de_gastos_id', $categoria_slc);
+        elseif ($usuario_slc and $categoria_slc)  {
+            $gastos = Gasto::where('user_id', Auth::user()->id)
+            ->where('usuario_id', $usuario_slc)
+            ->where('categoria_de_gastos_id', $categoria_slc);
         }
-        if ($categoria_slc){
-            $gastos = Gasto::where('user_id', Auth::user()->id)->where('categoria_de_gastos_id', $categoria_slc);
-        }
+
+        // if ($categoria_slc){
+        //     $gastos = Gasto::where('user_id', Auth::user()->id)->where('categoria_de_gastos_id', $categoria_slc);
+        // }
         if ($forma_pag){
             $gastos = Gasto::where('user_id', Auth::user()->id)->where('forma_de_pagamento', $forma_pag);
         }
