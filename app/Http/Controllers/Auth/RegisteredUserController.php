@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\CategoriaGasto;
+
+
 
 class RegisteredUserController extends Controller
 {
@@ -45,9 +48,21 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        Auth::login($user);
+
+        $var = array('Conta de Luz','Conta de Agua','Conta de Internet','Pagamento de Fatura','Plano de Saude');
+
+        $usuario = Auth::user()->id;
+
+        for($x=0;$x<len($var);$x++){
+            $registro_categorias = CategoriaGasto::create([
+                'user_id' => $usuario,
+                'categoria_de_gastos' => $var[$x],
+            ]);
+        }
+
         event(new Registered($user));
 
-        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

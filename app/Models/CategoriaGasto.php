@@ -10,6 +10,8 @@ class CategoriaGasto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'categoria_de_gastos'
+        'categoria_de_gastos',
+        'user_id'
+
     ];
 }

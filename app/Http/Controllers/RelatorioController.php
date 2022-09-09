@@ -30,26 +30,24 @@ class RelatorioController extends Controller
         $usuario_slc = request('usuario_id');
 
 
-        $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC');
+        //$gastos = Gasto::where('user_id', Auth::user()->id) ->orderBy('data_do_gasto', 'DESC');
+        $gastos = Gasto::where('user_id', Auth::user()->id);
 
-        if ($usuario_slc) {
-            $gastos = Gasto::where('user_id', Auth::user()->id)->where('usuario_id', $usuario_slc);
-        }
-        elseif ($usuario_slc and $categoria_slc)  {
-            $gastos = Gasto::where('user_id', Auth::user()->id)
-            ->where('usuario_id', $usuario_slc)
-            ->where('categoria_de_gastos_id', $categoria_slc);
+        if ($usuario_slc > 0) {
+            $gastos = $gastos->where('usuario_id', $usuario_slc);
         }
 
-        // if ($categoria_slc){
-        //     $gastos = Gasto::where('user_id', Auth::user()->id)->where('categoria_de_gastos_id', $categoria_slc);
-        // }
+        if ($categoria_slc > 0)  {
+            $gastos = $gastos->where('categoria_de_gastos_id', $categoria_slc);
+        }
         if ($forma_pag){
-            $gastos = Gasto::where('user_id', Auth::user()->id)->where('forma_de_pagamento', $forma_pag);
+            $gastos = $gastos->where('forma_de_pagamento', $forma_pag);
         }
         if ($data_inicio and $data_final){
-            $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $data_final));
+            $gastos = $gastos->whereBetween('data_do_gasto', array($data_inicio, $data_final));
         }
+
+        $gastos = $gastos->orderBy('data_do_gasto', 'DESC')->get();
 
         // if ($data_final == NULL and $data_inicio){
         //     $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
@@ -57,7 +55,6 @@ class RelatorioController extends Controller
         // if ($data_inicio == NULL and $data_final){
         //     $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
         // }
-            $gastos = $gastos->get();
 
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();

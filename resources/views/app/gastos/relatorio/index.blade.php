@@ -40,8 +40,8 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="usuario_id" class="form-label">Recebedor</label>
-                                <select id="usuario_id" name="usuario_id" class="form-select">
-                                    <option value="" disabled selected>Escolha um recebedor...</option>
+                                <select id="usuario_id" name="usuario_id" class="form-select" placeholder="Escolha um recebedor...">
+                                    <option value="0" selected>Todos</option>
                                     @foreach ($usuarios as $usuario)
                                     <option value="{{$usuario->id}}" {{$usuario->id == $usuario_slc ? 'selected' : ""}} id="usuario_{{$usuario->id}}">
                                         {{$usuario->nome_usuario}}</option>
@@ -54,7 +54,7 @@
                             <div class="mb-3">
                                 <label for="categoria_de_gastos_id" class="form-label">Categoria de Gasto</label>
                                 <select id="categoria_de_gastos_id" name="categoria_de_gastos_id" class="form-select" >
-                                    <option value="" disabled selected>Selecione uma Categoria</option>
+                                    <option value="0" selected>Todas</option>
                                     @foreach ($categoriaGastos as $categoria)
                                     <option value="{{$categoria->id}}"{{$categoria->id == $categoria_slc ? 'selected' : ""}} id="categoria_{{$categoria->id}}">
                                         {{$categoria->categoria_de_gastos}}</option>
