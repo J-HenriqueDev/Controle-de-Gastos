@@ -20,6 +20,7 @@ class CategoriaGastoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function Index() {
+        $nome_user = Auth::user()->name;
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
@@ -28,7 +29,7 @@ class CategoriaGastoController extends Controller
 
         $categorias = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
-        return view('app.gastos.categoria_gasto.index', compact('categorias','rendaMensal'));
+        return view('app.gastos.categoria_gasto.index', compact('categorias','rendaMensal','nome_user'));
     }
 
     /**

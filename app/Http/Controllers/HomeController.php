@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function Home() {
+
+        $nome_user = Auth::user()->name;
+
         $dataAtual = date('d-m-y');
         $dia = date('d');
         $mes = date('m');
@@ -48,7 +51,7 @@ class HomeController extends Controller
             'gastoHoje', 'gastoMes', 'gastoAno',
             'gastoDinheiro', 'gastoCredito', 'gastoDebito',
             'gastos', 'entradas', 'rendaMensal',
-            'entradaMes', 'entradaAno','porcentagem'
+            'entradaMes', 'entradaAno','porcentagem','nome_user'
         ));
     }
 }

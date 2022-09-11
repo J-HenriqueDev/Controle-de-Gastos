@@ -19,7 +19,7 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $nome_user = Auth::user()->name;
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
@@ -27,7 +27,7 @@ class UsuarioController extends Controller
         $rendaMensal = $entradaMes - $gastoMes;
 
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('created_at', 'ASC')->get();
-        return view('app.usuario.index', compact('usuarios','rendaMensal'));
+        return view('app.usuario.index', compact('nome_user','usuarios','rendaMensal'));
     }
 
     /**

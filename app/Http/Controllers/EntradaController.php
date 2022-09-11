@@ -18,6 +18,7 @@ class EntradaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function Index() {
+        $nome_user = Auth::user()->name;
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
@@ -26,7 +27,7 @@ class EntradaController extends Controller
 
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada', 'DESC')->get();
 
-        return view('app.entradas.index', compact('entradas','rendaMensal'));
+        return view('app.entradas.index', compact('nome_user','entradas','rendaMensal'));
     }
 
     /**
@@ -74,12 +75,13 @@ class EntradaController extends Controller
      */
     public function edit(Entrada $entrada)
     {
+        $nome_user = Auth::user()->name;
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
-        return view('app.entradas.edit', compact('entrada','rendaMensal'));
+        return view('app.entradas.edit', compact('entrada','rendaMensal','nome_user'));
     }
 
     /**

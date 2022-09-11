@@ -88,17 +88,17 @@
                         <div class="col-sm-6">
                             <label for="descricao" class="form-label d-block">Forma de Pagamento</label>
                             <div class="form-check form-check-inline mt-3">
-                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="dinheiro"
+                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="dinheiro" {{ $forma_pag == 1 ? 'checked' : '' }}
                                     value="1">
                                 <label class="form-check-label" for="dinheiro">Dinheiro</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="credito"
+                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="credito" {{ $forma_pag == 2 ? 'checked' : '' }}
                                     value="2">
                                 <label class="form-check-label" for="credito">Crédito</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="debito_pix"
+                                <input class="form-check-input" type="radio" name="forma_de_pagamento" id="debito_pix" {{ $forma_pag == 3 ? 'checked' : '' }}
                                     value="3">
                                 <label class="form-check-label" for="debito_pix">Débito/Pix</label>
                         </div>

@@ -18,6 +18,9 @@ class Relatorio_entradaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
+
+        $nome_user = Auth::user()->name;
+
         $hoje = Date('Y-m-d');
         $data_inicio = request('data_inicio');
         $data_final = request('data_final');
@@ -47,7 +50,7 @@ class Relatorio_entradaController extends Controller
         $rendaMensal = $entradaMes - $gastoMes;
         //
 
-        return view('app.gastos.relatorio.index_entrada',compact('forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
+        return view('app.gastos.relatorio.index_entrada',compact('forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
 
     }
 }

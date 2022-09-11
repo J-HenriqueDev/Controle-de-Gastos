@@ -67,8 +67,9 @@ class RelatorioController extends Controller
 
 
         //
+        $nome_user = Auth::user()->name;
 
-        return view('app.gastos.relatorio.index',compact('gastos','usuarios','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final'));
+        return view('app.gastos.relatorio.index',compact('forma_pag','nome_user','gastos','usuarios','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final'));
     }
     /**
      * Show the form for creating a new resource.

@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
 
         $usuario = Auth::user()->id;
 
-        for($x=0;$x<len($var);$x++){
+        for($x=0;$x<count($var);$x++){
             $registro_categorias = CategoriaGasto::create([
                 'user_id' => $usuario,
                 'categoria_de_gastos' => $var[$x],

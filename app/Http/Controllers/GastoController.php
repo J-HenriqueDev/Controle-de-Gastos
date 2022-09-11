@@ -20,6 +20,7 @@ class GastoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function Index() {
+        $nome_user = Auth::user()->name;
         $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->get();
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
@@ -31,7 +32,7 @@ class GastoController extends Controller
         $rendaMensal = $entradaMes - $gastoMes;
 
 
-        return view('app.gastos.gasto.index', compact('gastos', 'usuarios', 'categoriaGastos','rendaMensal'));
+        return view('app.gastos.gasto.index', compact('gastos', 'usuarios', 'categoriaGastos','rendaMensal','nome_user'));
     }
 
     /**
@@ -83,6 +84,7 @@ class GastoController extends Controller
      */
     public function edit(Gasto $gasto)
     {
+        $nome_user = Auth::user()->name;
         $usuarios = Usuario::get();
         $categoriaGastos = CategoriaGasto::get();
 
@@ -92,7 +94,7 @@ class GastoController extends Controller
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
 
-        return view('app.gastos.gasto.edit', compact('gasto', 'usuarios', 'categoriaGastos','rendaMensal'));
+        return view('app.gastos.gasto.edit', compact('nome_user','gasto', 'usuarios', 'categoriaGastos','rendaMensal'));
     }
 
     /**

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 use App\Models\CategoriaGasto;
+use Illuminate\Support\Facades\Auth;
+
+use Termwind\Components\Dd;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -33,17 +36,18 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        Auth::login($user);
+
 
         $var = array('Conta de Luz','Conta de Agua','Conta de Internet','Pagamento de Fatura','Plano de Saude');
-
         $usuario = Auth::user()->id;
 
-        for($x=0;$x<len($var);$x++){
-            $registro_categorias = CategoriaGasto::create([
-                'user_id' => $usuario,
-                'categoria_de_gastos' => $var[$x],
-            ]);
+
         }
+
+
+    public function createCategoryItens()
+    {
+
     }
+
 }
