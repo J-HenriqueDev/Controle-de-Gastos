@@ -37,17 +37,5 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-
-        $var = array('Conta de Luz','Conta de Agua','Conta de Internet','Pagamento de Fatura','Plano de Saude');
-        $usuario = Auth::user()->id;
-
-
-        }
-
-
-    public function createCategoryItens()
-    {
-
     }
-
 }

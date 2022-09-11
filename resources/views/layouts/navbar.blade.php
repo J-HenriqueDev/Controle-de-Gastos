@@ -28,6 +28,7 @@
               {{-- <div class="espaco"></div> --}}
               <div class="d-flex align-items-center">
                 <span class="fw-semibold ">{{$nome_user}}</span>
+                <i class="menu-icon tf-icons bx bx-chevron-down"></i>
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
