@@ -19,11 +19,14 @@
             @endif
         </div>
     </div>
-    <div class="flex-fill">
+    <div class="d-flex flex-fill justify-content-end">
         <li class="d-flex ml-auto">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <a class="gap-2 d-flex align-items-center" href="javascript:void(0);" data-bs-toggle="dropdown">
               <div class="avatar avatar-online">
-                <img src="{{asset('assets/img/avatars/5.png')}}" alt class="w-px-40 h-auto rounded-circle">
+                <img src="{{asset('assets/img/avatars/avatar.png')}}" alt class="w-px-40 h-auto rounded-circle">
+              </div>
+              {{-- <div class="espaco"></div> --}}
+              <div class="d-flex align-items-center">
                 <span class="fw-semibold ">{{$nome_user}}</span>
               </div>
             </a>
