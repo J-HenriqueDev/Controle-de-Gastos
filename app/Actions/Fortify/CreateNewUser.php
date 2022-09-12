@@ -31,11 +31,21 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $usuario = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
 
+        $categorias = array('Conta de Luz','Conta de Agua','Conta de Internet','Pagamento de Fatura','Plano de Saude');
+
+            foreach($categorias as $categoria){
+            $nova_categoria = CategoriaGasto::create([
+                'categoria_de_gastos' => $categoria,
+                'user_id' => $usuario->id,
+            ]);
+        }
+
+        return $usuario;
     }
 }
