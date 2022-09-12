@@ -41,4 +41,8 @@
         
         npm run dev 
 
+## Populando a database e Apagando
+            php artisan db:seed --class=GastoSeeder
+            DELETE FROM gastos WHERE user_id = 8;
+
 </p> 

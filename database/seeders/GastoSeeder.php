@@ -14,6 +14,6 @@ class GastoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Gasto::factory(30)->create();
     }
 }
