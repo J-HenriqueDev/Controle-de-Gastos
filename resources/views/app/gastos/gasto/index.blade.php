@@ -157,7 +157,7 @@
                         <tr>
                             <td>{{$gasto->usuario->nome_usuario}}</td>
                             <td>{{$gasto->descricao_gasto}}</td>
-                            <td>R$ {{str_replace('.', ',', $gasto->valor_do_gasto)}}</td>
+                            <td>R$ {{number_format($gasto->valor_do_gasto,2,",",".")}}</td>
                             <td>{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</td>
                             <td class="d-flex justify-content-between text-center">
                                 <a type="button" href="{{route('gastos.edit', $gasto->id)}}">

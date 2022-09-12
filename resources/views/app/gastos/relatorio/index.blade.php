@@ -174,7 +174,7 @@
                           </td>
                           <td class="align-right fw-bold">
                             <span class="text-success">R$</span>
-                            <span class="mb-0">{{str_replace('.', ',', $gasto->valor_do_gasto)}}</span>
+                            <span class="mb-0">{{number_format($gasto->valor_do_gasto,2,",",".")}}</span>
                           </td>
                         </tr>
                       </tbody>

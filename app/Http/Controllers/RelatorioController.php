@@ -63,7 +63,7 @@ class RelatorioController extends Controller
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $rendaMensal = $entradaMes - $gastoMes;
+        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
 
         //

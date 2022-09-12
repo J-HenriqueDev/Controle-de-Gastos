@@ -38,7 +38,7 @@ class HomeController extends Controller
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada','DESC')->paginate(5, ['*'], 'entradas');
 
         // Cálculo Renda Mensal
-        $rendaMensal = $entradaMes - $gastoMes;
+        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
         if ($gastoMes and $entradaMes != 0)
             $porcentagem = ($gastoMes / $entradaMes) * 100;

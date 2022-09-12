@@ -13,9 +13,9 @@
             <div class="nav-item d-flex align-items-center">
             <a class="nav-edit" href="{{route('home')}}">SALDO ATUAL: </a>
             @if($rendaMensal >= 0)
-            <a class="p-2 success"> R$ {{str_replace('.', ',', $rendaMensal)}}</a>
+            <a class="p-2 success"> R$ {{$rendaMensal}}</a>
             @else
-                <a class="p-2 texto-verm"> R$ {{str_replace('.', ',', $rendaMensal)}}</a>
+                <a class="p-2 texto-verm"> R$ {{$rendaMensal}}</a>
             @endif
         </div>
     </div>

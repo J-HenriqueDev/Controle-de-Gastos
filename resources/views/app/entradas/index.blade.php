@@ -91,7 +91,7 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($entradas as $entrada)
                         <tr>
-                            <td><strong class="text-success">R$</strong> <b>{{str_replace('.', ',', $entrada->valor_da_entrada)}}</b></td>
+                            <td><strong class="text-success">R$</strong> <b>{{number_format($entrada->valor_da_entrada,2,",",".")}}</b></td>
                             <td>{{$entrada->descricao_entrada}}</td>
                             <td>{{Carbon\Carbon::parse($entrada->data_da_entrada)->format('d/m/Y')}}</td>
                             <td class="d-flex justify-content-between text-center">

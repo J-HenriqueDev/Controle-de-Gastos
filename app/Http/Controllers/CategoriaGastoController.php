@@ -25,7 +25,7 @@ class CategoriaGastoController extends Controller
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         // Cálculo Renda Mensal
-        $rendaMensal = $entradaMes - $gastoMes;
+        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
         $categorias = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 

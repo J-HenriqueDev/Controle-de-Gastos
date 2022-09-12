@@ -132,7 +132,7 @@
                             </td>
                             <td class="align-right fw-bold col-2">
                               <span class="text-success">R$</span>
-                              <span class="mb-0">{{str_replace('.', ',', $entrada->valor_da_entrada)}}</span>
+                              <span class="mb-0">{{number_format($entrada->valor_da_entrada,2,",",".")}}</span>
                             </td>
                           </tr>
                         </tbody>

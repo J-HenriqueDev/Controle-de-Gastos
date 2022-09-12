@@ -47,7 +47,7 @@ class Relatorio_entradaController extends Controller
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $rendaMensal = $entradaMes - $gastoMes;
+        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
         //
 
         return view('app.gastos.relatorio.index_entrada',compact('forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));

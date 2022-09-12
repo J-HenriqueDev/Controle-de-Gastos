@@ -23,7 +23,7 @@ class GastoFactory extends Factory
             'usuario_id' => rand(1, 8),
             'categoria_de_gastos_id' => 4,
             'descricao_gasto' => $this->faker->name(),
-            'valor_do_gasto' => rand(1, 100),
+            'valor_do_gasto' => rand(1, 100000),
             'data_do_gasto' => date('Y-m-d'),
             'dia_do_gasto' => date('d'),
             'mes_do_gasto' => date('m'),

@@ -24,7 +24,7 @@ class UsuarioController extends Controller
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         // Cálculo Renda Mensal
-        $rendaMensal = $entradaMes - $gastoMes;
+        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('created_at', 'ASC')->get();
         return view('app.usuario.index', compact('nome_user','usuarios','rendaMensal'));

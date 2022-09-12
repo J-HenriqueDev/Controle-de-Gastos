@@ -49,7 +49,7 @@
 
         <!-- Descrição -->
         <span class="fw-semibold d-block mb-1">Gasto Diário</span>
-        <h3 class="card-title mb-2">R$ {{str_replace('.', ',', $gastoHoje)}}</h3>
+        <h3 class="card-title mb-2">R$ {{number_format($gastoHoje,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@
 
         <!-- Descrição -->
         <span class="fw-semibold d-block mb-1">Gasto Mensal</span>
-        <h3 class="card-title mb-2">R$ {{str_replace('.', ',', $gastoMes)}}</h3>
+        <h3 class="card-title mb-2">R$ {{number_format($gastoMes,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -87,7 +87,7 @@
 
         <!-- Descrição -->
         <span class="d-block mb-1">Gasto Anual</span>
-        <h3 class="card-title text-nowrap mb-2">R$ {{str_replace('.', ',', $gastoAno)}}</h3>
+        <h3 class="card-title text-nowrap mb-2">R$ {{number_format($gastoAno,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -146,7 +146,7 @@
                   </td>
                   <td class="align-right fw-bold">
                     <span class="text-success">R$</span>
-                    <span class="mb-0">{{str_replace('.', ',', $gasto->valor_do_gasto)}}</span>
+                    <span class="mb-0">{{number_format($gasto->valor_do_gasto,2,",",".")}}</span>
                   </td>
                 </tr>
               </tbody>
@@ -184,7 +184,7 @@
 
         <!-- Descrição -->
         <span class="fw-semibold d-block mb-1">Gasto em Dinheiro</span>
-        <h3 class="card-title mb-2">R$ {{str_replace('.', ',', $gastoDinheiro)}}</h3>
+        <h3 class="card-title mb-2">R$ {{number_format($gastoDinheiro,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -203,7 +203,7 @@
 
         <!-- Descrição -->
         <span class="fw-semibold d-block mb-1">Gasto no Débito/Pix</span>
-        <h3 class="card-title mb-2">R$ {{str_replace('.', ',', $gastoDebito)}}</h3>
+        <h3 class="card-title mb-2">R$ {{number_format($gastoDebito,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -223,7 +223,7 @@
 
         <!-- Descrição -->
         <span class="d-block mb-1">Gasto no Crédito</span>
-        <h3 class="card-title text-nowrap mb-2">R$ {{str_replace('.', ',', $gastoCredito)}}</h3>
+        <h3 class="card-title text-nowrap mb-2">R$ {{number_format($gastoCredito,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -272,7 +272,7 @@
                         </td>
                         <td class="align-right fw-bold col-2">
                           <span class="text-success">R$</span>
-                          <span class="mb-0">{{str_replace('.', ',', $entrada->valor_da_entrada)}}</span>
+                          <span class="mb-0">{{number_format($entrada->valor_da_entrada,2,",",".")}}</span>
                         </td>
                       </tr>
                     </tbody>
@@ -306,7 +306,7 @@
 
         <!-- Descrição -->
         <span class="fw-semibold d-block mb-1">Entrada Mensal</span>
-        <h3 class="card-title mb-2">R$ {{str_replace('.', ',', $entradaMes)}}</h3>
+        <h3 class="card-title mb-2">R$ {{number_format($entradaMes,2,",",".")}}</h3>
       </div>
     </div>
   </div>
@@ -327,9 +327,9 @@
         <span class="d-block mb-1">Renda no Mês</span>
         <h3 class="card-title text-nowrap mb-2">
           @if($rendaMensal >= 0)
-            <span class="text-success">R$ {{str_replace('.', ',', $rendaMensal)}}</span>
+            <span class="text-success">R$ {{$rendaMensal}}</span>
           @else
-            <span class="text-danger">R$ {{str_replace('.', ',', $rendaMensal)}}</span>
+            <span class="text-danger">R$ {{$rendaMensal}}</span>
           @endif
         </h3>
       </div>
@@ -350,7 +350,7 @@
 
         <!-- Descrição -->
         <span class="d-block mb-1">Entrada Anual</span>
-        <h3 class="card-title text-nowrap mb-2">R$ {{str_replace('.', ',', $entradaAno)}}</h3>
+        <h3 class="card-title text-nowrap mb-2">R$ {{number_format($entradaAno,2,",",".")}}</h3>
       </div>
     </div>
   </div>
