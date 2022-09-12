@@ -30,12 +30,12 @@ class HomeController extends Controller
         $gastoDebito = Gasto::where('user_id', Auth::user()->id)->where('forma_de_pagamento', 3)->sum('valor_do_gasto');
 
         // $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->limit(5)->get();
-        $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5, ['*'], 'gastos');
+        $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto','DESC')->paginate(5, ['*'], 'gastos');
 
         // Entradas
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         $entradaAno = Entrada::where('user_id', Auth::user()->id)->where('ano_da_entrada', $ano)->sum('valor_da_entrada');
-        $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada')->paginate(5, ['*'], 'entradas');
+        $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada','DESC')->paginate(5, ['*'], 'entradas');
 
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
