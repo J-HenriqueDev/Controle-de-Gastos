@@ -81,7 +81,7 @@
         </div>
     </div>
 </div>
-<div class="col-12 mb-4">
+{{--  <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div class="card-body">
@@ -91,12 +91,12 @@
         </div>
     </div>
  </div>
-</div>
+</div>  --}}
 <div class="row">
     <div class="col-12 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-          <h5 class="card-edit m-0 me-2">Entradas:</h5>
+          <h5 class="card-edit m-0 me-2">Entradas: {{ count($entradas) }}</h5>
         </div>
         <div class="card-body">
 

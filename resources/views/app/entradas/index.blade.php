@@ -69,7 +69,7 @@
     <div class="col-12 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-          <h5 class="card-edit m-0 me-2">Entradas recentes:</h5>
+          <h5 class="card-edit m-0 me-2">Entradas recentes: {{ count($entradas) }}</h5>
         </div>
         <div class="card-body">
 
@@ -98,7 +98,6 @@
                                 <a type="button" href="{{route('entradas.edit', $entrada->id)}}">
                                     <i class="bx bx-edit text-success fs-3"></i>
                                 </a>
-
                                 <form id="removeForm_{{$entrada->id}}" action="{{route('entradas.destroy', $entrada->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')

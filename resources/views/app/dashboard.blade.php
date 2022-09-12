@@ -98,7 +98,7 @@
   <div class="col-12 mb-4">
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="card-edit m-0 me-2">Transações Recentes:</h5>
+        <h5 class="card-edit m-0 me-2">Transações Recentes: </h5>
     </div>
 
     <div class="card-body">
