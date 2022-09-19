@@ -286,7 +286,7 @@
     <div class="pagination justify-content-center">
         {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
-
+</div>
 </div>
 
 
