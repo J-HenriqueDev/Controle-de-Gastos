@@ -104,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="card-footer d-flex justify-content-end">
                     <a href="{{route('relatorios.index')}}" class="btn btn-outline-primary">Exibir Todos</a><span class="espaco"></span>
                     <button class="btn btn-md btn-primary fw-bold align-right" value="&nbsp">Pesquisar</button>
