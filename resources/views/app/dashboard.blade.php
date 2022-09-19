@@ -36,7 +36,7 @@
 <!-- Cards Diário/Mensal/Anual -->
 <div class="row mb-4">
   <!-- Diário -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <div class="card-title d-flex align-items-start justify-content-between">
@@ -55,7 +55,7 @@
   </div>
 
   <!-- Mensal -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -74,7 +74,7 @@
   </div>
 
   <!-- Anual -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -129,7 +129,7 @@
             <tbody class="table-border-bottom-0">
               <tr>
                   <td class="text-left col-2"><strong>{{$gasto->usuario->nome_usuario}}</strong></td>
-                  <td class="col-4">
+                  <td class="col-sm-4">
                     <small class="text-muted">{{$gasto->descricao_gasto}}</small>
                   </td>
                   <td class="col-2">
@@ -170,7 +170,7 @@
 <!-- Cards Crédito/Dinheiro/Pix -->
 <div class="row mb-4">
   <!-- Dinheiro -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
         <div class="card-title d-flex align-items-start justify-content-between">
@@ -190,7 +190,7 @@
   </div>
 
   <!-- Débito/Pix -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -209,7 +209,7 @@
   </div>
 
   <!-- Crédito -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -286,14 +286,14 @@
     <div class="pagination justify-content-center">
         {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
-</div>
+
 </div>
 
 
 <!-- Cards Entrada -->
 <div class="row mb-4">
   <!-- Entrada -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -312,7 +312,7 @@
   </div>
 
   <!-- Renda Mensal -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 
@@ -337,7 +337,7 @@
   </div>
 
   <!-- Entrada Anual -->
-  <div class="col-4">
+  <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
 

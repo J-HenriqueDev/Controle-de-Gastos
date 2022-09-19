@@ -47,14 +47,13 @@ class RelatorioController extends Controller
             $gastos = $gastos->whereBetween('data_do_gasto', array($data_inicio, $data_final));
         }
 
-        $gastos = $gastos->orderBy('data_do_gasto', 'DESC')->get();
-
-        // if ($data_final == NULL and $data_inicio){
-        //     $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
-        // }
+        if ($data_final == NULL and $data_inicio){
+            $gastos = $gastos->whereBetween('data_do_gasto', array($data_inicio, $hoje));
+        }
         // if ($data_inicio == NULL and $data_final){
         //     $gastos = Gasto::where('user_id', Auth::user()->id)->whereBetween('data_do_gasto', array($data_inicio, $hoje));
         // }
+        $gastos = $gastos->orderBy('data_do_gasto', 'DESC')->get();
 
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
