@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="descricao" class="form-label">Descrição da Entrada</label>
-                            <textarea class="form-control" name="descricao_entrada" id="descricao_entrada" rows="6"
+                            <textarea class="form-control" name="descricao_entrada" id="descricao_entrada" rows="4"
                                 placeholder="Salário do mês de Abril ..." required>{{$entrada->descricao_entrada}}</textarea>
                             @error('descricao_entrada')
                             <small class="text-danger fw-bold">{{$message}}</small>

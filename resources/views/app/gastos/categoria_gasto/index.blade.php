@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="categoria" class="form-label">Categoria de Gastos</label>
-                            <input type="text" class="form-control form-control" name="categoria_de_gastos" id="categoria" placeholder="Fatura" required maxlength="50">
+                            <input type="text" class="form-control form-control" name="categoria_de_gastos" id="categoria" placeholder="Fatura" required maxlength="50" autofocus>
                             <small>* São permitidos apenas 50 caractéres.</small>
                             @error('categoria_de_gastos')
                                 <small class="text-danger fw-bold">{{$message}}</small>

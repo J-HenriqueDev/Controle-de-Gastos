@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="descricao" class="form-label">Descrição do Gasto</label>
-                            <textarea class="form-control" name="descricao_gasto" id="descricao" rows="6"
+                            <textarea class="form-control" name="descricao_gasto" id="descricao" rows="4"
                                 placeholder="Pagamento do boleto da Faculdade" required>{{$gasto->descricao_gasto}}</textarea>
                             @error('descricao_gasto')
                             <small class="text-danger fw-bold">{{$message}}</small>

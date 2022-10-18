@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <div class="card mb-4">
+            <div class="card mb-12">
                 <div class="card-header">Editar Usuario</div>
                 <form action="{{route('usuario.update', $usuario->id)}}" method="post">
                     @csrf
