@@ -54,6 +54,7 @@
                             @error('descricao_entrada')
                             <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror
+                            <small>* É importante preencher a descrição para obter um melhor controle dos seus gastos.</small>
                         </div>
                     </div>
                 </div>
