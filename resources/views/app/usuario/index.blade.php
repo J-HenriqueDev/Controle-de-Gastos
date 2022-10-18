@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card mb-4">
 
             <form action="{{route('usuario.store')}}" method="post">
@@ -12,11 +12,13 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="novo_usuario" class="form-label">Nome do Recebedor</label>
-                            <input type="text" class="form-control form-control" name="nome_usuario" id="novo_usuario" placeholder="Fábio Menandro" autofocus required>
+                            <input type="text" class="form-control form-control" name="nome_usuario" id="novo_usuario" placeholder="Fábio Menandro" autofocus required maxlength="50">
+                            <small>* São permitidos apenas 50 caractéres.</small>
                             @error('nome_usuario')
                                 <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror
                         </div>
+
                     </div>
                 </div>
 
@@ -58,11 +60,9 @@
                                     <a type="button" href="{{route('usuario.edit', $usuario->id)}}">
                                         <i class="bx bx-edit text-success fs-3"></i>
                                     </a>
-
                                     <form id="removeForm_{{$usuario->id}}" action="{{route('usuario.destroy', $usuario->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-
                                         <a type="button" onclick="getElementById('removeForm_{{$usuario->id}}').submit()">
                                             <i class="bx bx-block text-danger fs-3"></i>
                                         </a>

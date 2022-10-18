@@ -79,7 +79,7 @@
         <li class="menu-item {{ Request::is('categoria-gastos') ? 'active': '' }}">
             <a href="{{route('categoria-gastos.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Categoria de Gastos</div>
+                <div data-i18n="Layouts">Nova Categoria</div>
             </a>
         </li>
 

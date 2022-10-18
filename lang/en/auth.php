@@ -14,7 +14,7 @@ return [
     */
 
     'failed' => 'E-mail ou senha incorretos, por favor tente novamente.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'password' => 'A senha informada está incorreta.',
+    'throttle' => 'Muitas tentativas de login. Tente novamente em :seconds segundos.',
 
 ];

@@ -13,9 +13,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="novo_usuario" class="form-label">Nome Usuário</label>
-                                <input type="text" class="form-control form-control" name="nome_usuario" id="novo_usuario" value="{{$usuario->nome_usuario}}" placeholder="John Doe" autofocus>
+                                <input type="text" class="form-control form-control" name="nome_usuario" id="novo_usuario" value="{{$usuario->nome_usuario}}" placeholder="Fábio Menandro" autofocus maxlength="50">
                                 @error('nome_usuario')
-                                    <small class="text-danger fw-bold">{{$message}}</small>   
+                                    <small class="text-danger fw-bold">{{$message}}</small>
                                 @enderror
                             </div>
                         </div>

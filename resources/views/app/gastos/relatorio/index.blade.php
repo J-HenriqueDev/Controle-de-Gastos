@@ -149,8 +149,8 @@
 
                         </tr>
                     </thead>
-
-                  @foreach ($gastos as $gasto)
+                    
+                    @foreach ($gastos as $gasto)
                     <tbody class="table-border-bottom-0">
                       <tr>
                           <td class="text-left col-2"><strong>{{$gasto->Usuario->nome_usuario}}</strong></td>

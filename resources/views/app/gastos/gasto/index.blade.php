@@ -112,11 +112,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="descricao" class="form-label">Descrição do Gasto</label>
-                            <textarea class="form-control" name="descricao_gasto" id="descricao" rows="6"
+                            <textarea class="form-control" name="descricao_gasto" id="descricao" rows="4"
                                 placeholder="Pagamento do boleto da Faculdade" required></textarea>
                             @error('descricao_gasto')
                             <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror
+                            <small>* É importante preencher a descrição para obter um melhor controle dos seus gastos.</small>
                         </div>
                     </div>
                 </div>

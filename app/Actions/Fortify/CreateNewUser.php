@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        $categorias = array('Conta de Luz','Conta de Agua','Conta de Internet','Pagamento de Fatura','Plano de Saude');
+        $categorias = array('Consumo de Água','Consumo de Energia','Despesa de internet','Pagamento de Fatura','Combustível / Meio de transporte');
 
             foreach($categorias as $categoria){
             $nova_categoria = CategoriaGasto::create([

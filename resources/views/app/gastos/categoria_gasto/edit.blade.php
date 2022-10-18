@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="categoria" class="form-label">Categoria de Gastos</label>
-                            <input type="text" class="form-control form-control" name="categoria_de_gastos" id="categoria" value={{$categoriaGasto->categoria_de_gastos}} placeholder="Fatura" required>
+                            <input type="text" class="form-control form-control" name="categoria_de_gastos" id="categoria" value={{$categoriaGasto->categoria_de_gastos}} placeholder="Fatura" required maxlength="50">
                             @error('categoria_de_gastos')
                                 <small class="text-danger fw-bold">{{$message}}</small>
                             @enderror

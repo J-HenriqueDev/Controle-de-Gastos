@@ -17,6 +17,7 @@
                 @error('name')
                     <small class="text-danger fw-bold">{{$message}}</small>
                 @enderror
+                <small>* São permitidos apenas 20 caractéres.</small>
             </div>
 
             <div class="mb-3">
