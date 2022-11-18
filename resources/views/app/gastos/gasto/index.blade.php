@@ -162,7 +162,7 @@
                             <td>{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</td>
                             <td class="d-flex justify-content-between text-center">
                                 <a type="button" href="{{route('gastos.edit', $gasto->id)}}">
-                                    <i class="bx bx-edit text-success fs-3"></i>
+                                    <i class="bx bx-edit text-success fs-1"></i>
                                 </a>
 
                                 <form id="removeForm_{{$gasto->id}}" action="{{route('gastos.destroy', $gasto->id)}}"
@@ -171,7 +171,7 @@
                                     @method('DELETE')
 
                                     <a type="button" onclick="getElementById('removeForm_{{$gasto->id}}').submit()">
-                                        <i class="bx bx-block text-danger fs-3"></i>
+                                        <i class="bx bx-block text-danger fs-1"></i>
                                     </a>
                                 </form>
                             </td>

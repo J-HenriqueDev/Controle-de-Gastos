@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-12">
-                <div class="card-header">Editar Usuario</div>
+                <<div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-edit m-0 me-2">Editando o usuário:  {{$usuario->nome_usuario}}</h5>
+                  </div>
                 <form action="{{route('usuario.update', $usuario->id)}}" method="post">
                     @csrf
                     @method('PATCH')

@@ -67,12 +67,13 @@ class UsuarioController extends Controller
     public function edit(Usuario $usuario)
 
     {
+        $nome_user = Auth::user()->name;
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         // Cálculo Renda Mensal
         $rendaMensal = $entradaMes - $gastoMes;
-        return view('app.usuario.edit', compact('usuario','rendaMensal'));
+        return view('app.usuario.edit', compact('usuario','rendaMensal','nome_user'));
     }
 
     /**

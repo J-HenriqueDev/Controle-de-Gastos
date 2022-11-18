@@ -7,28 +7,55 @@
     <div class="card h-100">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div class="card-body">
-            @if ($porcentagem >= 60 )
-                <div class="alert alert-danger" role="alert">
-                    Alerta, <?php echo number_format((float)$porcentagem, 2, '.', '')?>% do valor inserido já foi utilizado!
-                  </div>
-            @endif
-
-
-            @if ($porcentagem >= 100)
+            @if ($porcentagem == 100)
+            <div class="alert alert-danger" role="alert">
+                Alerta, <?php echo number_format((float)$porcentagem, 2, '.', '')?>% do valor inserido já foi utilizado!
+              </div>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
+            
+            @elseif ($porcentagem >= 100)
+            <div class="alert alert-danger" role="alert">
+                Alerta, você utilizou <?php echo number_format((float)$porcentagem, 2, '.', '')?>% a mais do que foi inserido!
+              </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
 
+            @elseif ($porcentagem >= 60 )
+                <div class="alert alert-danger" role="alert">
+                    Alerta, <?php echo number_format((float)$porcentagem, 2, '.', '')?>% do valor inserido já foi utilizado!
+                  </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
+                </div>
 
-            @else
+            @elseif ($porcentagem == 0 )
+            <div class="alert alert-danger" role="alert">
+                Não encontramos nenhuma movimentação em nosso sistema, adicione um gasto para que esta barra se movimente :)
+              </div>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
+
+            @elseif ($porcentagem >= 100)
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
+            </div>
+
+            @else
+            <div class="alert alert-primary" role="alert">
+                Atualmente foi gasto <?php echo number_format((float)$porcentagem, 2, '.', '') ?>% do seu dinheiro!
+              </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
 
 
+
             @endif
+        </div>
         </div>
       </div>
 </div>
@@ -280,7 +307,7 @@
                   @endif
                 </table>
 
-      </div>
+
       </div>
     </div>
     <div class="pagination justify-content-center">

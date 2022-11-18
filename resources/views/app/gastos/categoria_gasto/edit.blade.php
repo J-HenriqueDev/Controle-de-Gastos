@@ -4,7 +4,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-4">
-
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="card-edit m-0 me-2">Editando a categoria:  {{$categoriaGasto->categoria_de_gastos}}</h5>
+              </div>
             <form action="{{route('categoria-gastos.update', $categoriaGasto->id)}}" method="post">
                 @csrf
                 @method('PATCH')
