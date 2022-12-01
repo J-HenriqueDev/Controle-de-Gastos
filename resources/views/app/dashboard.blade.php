@@ -271,12 +271,10 @@
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="card-edit m-0 me-2">Entradas Recentes:</h5>
       </div>
-      <div class="card-body">
+      <d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     iv class="card-body">
 
             @if (count($entradas) ==0)
               <p>Nenhuma entrada recente encontrada.<p><a href="/entradas">Clique aqui para adicionar!</a>
-
-
 
             @else
 
@@ -311,19 +309,20 @@
                         </td>
                       </tr>
                     </tbody>
+                </div>
                   @endforeach
-                  @endif
                 </table>
-
-
+                @endif
+            </div>
+        </div>
       </div>
     </div>
     <div class="pagination justify-content-center">
         {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
  </div>
-</div>
-</div>
+
+
 
 
 <!-- Cards Entrada -->
