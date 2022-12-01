@@ -3,31 +3,17 @@
 @section('content')
 
 
-@if (count($usuarios) == 0 and count($categoriaGastos) == 0)
+
+@if (count($entradas) == 0)
 <div class="alert alert-danger alert-dismissible" role="alert">
-    É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
-    <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
-    <a href="{{route('categoria-gastos.index')}}">aqui</a>.
+    Para ter um relatório de entradas é necessário ter feito uma entrada de dinheiro. Por favor Clique
+    <a href="{{route('entradas.index')}}"">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
-  </div>
-    @elseif (count($usuarios) != 0 and count($categoriaGastos) == 0)
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        Por favor crie uma categoria para prosseguir com o registro de saida. Clique
-        <a href="{{route("categoria-gastos.index")}}"">aqui</a>.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        </button>
-      </div>
+    </div>
 
-      @elseif (count($usuarios) == 0 and count($categoriaGastos) != 0)
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        Por favor crie uma recebedor para prosseguir com o registro de saida. Clique
-        <a href="{{route('usuario.index')}}">aqui</a>.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        </button>
-      </div>
 
-      @endif
+    @endif
 
 
 <div class="row">
@@ -143,5 +129,19 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+<div class="row">
+   <div class="col-12 mb-4">
+     <div class="card h-100">
+       <div class="card-header d-flex justify-content-end">
+         <h5 class="card-edit m-0 me-2">
+           {{--  Transações: {{ count($gastos)  }} Total R$ {{number_format($total,2,",",".")}}</h5>  --}}
+           <a class="nav-edit"">VALOR TOTAL: </a>
+           <a class="p-2 success"> R$ {{number_format($total,2,",",".")}}</a>
+
+       </div>
+</div>
+</div>
 </div>
 @endsection

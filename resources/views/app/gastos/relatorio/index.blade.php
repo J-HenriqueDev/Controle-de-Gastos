@@ -128,7 +128,8 @@
     <div class="col-12 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between">
-          <h5 class="card-edit m-0 me-2">Transações: {{ count($gastos)  }}</h5>
+          <h5 class="card-edit m-0 me-2">
+            Transações: {{ count($gastos)  }}</h5>
         </div>
         <div class="card-body">
             @if (count($gastos) == 0)
@@ -149,7 +150,7 @@
 
                         </tr>
                     </thead>
-                    
+
                     @foreach ($gastos as $gasto)
                     <tbody class="table-border-bottom-0">
                       <tr>
@@ -187,5 +188,18 @@
         </div>
     </div>
  </div>
+</div>
+ <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-end">
+          <h5 class="card-edit m-0 me-2">
+            {{--  Transações: {{ count($gastos)  }} Total R$ {{number_format($total,2,",",".")}}</h5>  --}}
+            <a class="nav-edit"">VALOR TOTAL: </a>
+            <a class="p-2 success"> R$ {{number_format($total,2,",",".")}}</a>
+
+        </div>
+ </div>
+</div>
 </div>
 @endsection

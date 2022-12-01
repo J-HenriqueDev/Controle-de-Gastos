@@ -42,6 +42,7 @@ class Relatorio_entradaController extends Controller
         }
 
         $entradas = $entradas->get();
+        $total = $entradas->sum('valor_da_entrada');
 
         // Cálculo Renda Mensal
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
@@ -50,7 +51,7 @@ class Relatorio_entradaController extends Controller
         $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
         //
 
-        return view('app.gastos.relatorio.index_entrada',compact('forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
+        return view('app.gastos.relatorio.index_entrada',compact('total','forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
 
     }
 }

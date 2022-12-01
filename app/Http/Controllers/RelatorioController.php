@@ -55,6 +55,8 @@ class RelatorioController extends Controller
         // }
         $gastos = $gastos->orderBy('data_do_gasto', 'DESC')->get();
 
+        $total = $gastos->sum('valor_do_gasto');
+
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
@@ -68,7 +70,7 @@ class RelatorioController extends Controller
         //
         $nome_user = Auth::user()->name;
 
-        return view('app.gastos.relatorio.index',compact('forma_pag','nome_user','gastos','usuarios','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final'));
+        return view('app.gastos.relatorio.index',compact('forma_pag','nome_user','gastos','usuarios','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final','total'));
     }
     /**
      * Show the form for creating a new resource.

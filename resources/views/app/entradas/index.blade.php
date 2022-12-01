@@ -14,7 +14,7 @@
                             <label for="valor" class="form-label">Valor de Entrada</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text">R$</span>
-                                <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder ="1.800" step="0.01" min="0.01" required>
+                                <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder ="1.800" step="0.01" min="0.01" required autofocus>
                                 {{-- <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder="1.800" required> --}}
                                 @error('valor_da_entrada')
                                     <small class="text-danger fw-bold">{{$message}}</small>
@@ -115,6 +115,19 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+   <div class="col-12 mb-4">
+     <div class="card h-100">
+       <div class="card-header d-flex justify-content-end">
+         <h5 class="card-edit m-0 me-2">
+           {{--  Transações: {{ count($gastos)  }} Total R$ {{number_format($total,2,",",".")}}</h5>  --}}
+           <a class="nav-edit"">VALOR TOTAL: </a>
+           <a class="p-2 success"> R$ {{number_format($total,2,",",".")}}</a>
+        </div>
         </div>
     </div>
 </div>

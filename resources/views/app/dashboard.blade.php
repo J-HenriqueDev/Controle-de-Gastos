@@ -14,7 +14,15 @@
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $porcentagem ?>%"><?php echo number_format((float)$porcentagem, 2, '.', '') ?>%</div>
             </div>
-            
+
+            @elseif($rendaMensal < 0)
+            <div class="alert alert-danger" role="alert">
+                Alerta, você utilizou R$<?php echo number_format((float)$rendaMensal, 2, '.', '')?> a mais do que foi inserido, por favor realize uma entrada de dinheiro para regularizar isso!
+              </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:100%">100%</div>
+            </div>
+
             @elseif ($porcentagem >= 100)
             <div class="alert alert-danger" role="alert">
                 Alerta, você utilizou <?php echo number_format((float)$porcentagem, 2, '.', '')?>% a mais do que foi inserido!
@@ -314,6 +322,7 @@
         {!! $entradas->appends(['gastos' => $gastos->currentPage()])->links() !!}
     </div>
  </div>
+</div>
 </div>
 
 

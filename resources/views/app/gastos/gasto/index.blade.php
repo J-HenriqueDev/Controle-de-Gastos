@@ -41,7 +41,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="usuario_id" class="form-label">Recebedor</label>
-                                <select id="usuario_id" name="usuario_id" class="form-select" required>
+                                <select id="usuario_id" name="usuario_id" class="form-select" required autofocus>
                                     <option value="" disabled selected>Escolha um recebedor...</option>
                                     @foreach ($usuarios as $usuario)
                                     <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}">
@@ -183,5 +183,19 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+<div class="row">
+   <div class="col-12 mb-4">
+     <div class="card h-100">
+       <div class="card-header d-flex justify-content-end">
+         <h5 class="card-edit m-0 me-2">
+           {{--  Transações: {{ count($gastos)  }} Total R$ {{number_format($total,2,",",".")}}</h5>  --}}
+           <a class="nav-edit"">VALOR TOTAL: </a>
+           <a class="p-2 success"> R$ {{number_format($total,2,",",".")}}</a>
+
+       </div>
+</div>
+</div>
 </div>
 @endsection

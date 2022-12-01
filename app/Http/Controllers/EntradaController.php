@@ -22,12 +22,13 @@ class EntradaController extends Controller
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
+
         // Cálculo Renda Mensal
         $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada', 'DESC')->get();
-
-        return view('app.entradas.index', compact('nome_user','entradas','rendaMensal'));
+        $total = $entradas->sum('valor_da_entrada');
+        return view('app.entradas.index', compact('total','nome_user','entradas','rendaMensal'));
     }
 
     /**

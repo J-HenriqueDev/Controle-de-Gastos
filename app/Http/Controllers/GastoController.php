@@ -22,6 +22,7 @@ class GastoController extends Controller
     public function Index() {
         $nome_user = Auth::user()->name;
         $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->get();
+        $total = $gastos->sum('valor_do_gasto');
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
@@ -32,7 +33,7 @@ class GastoController extends Controller
         $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
 
-        return view('app.gastos.gasto.index', compact('gastos', 'usuarios', 'categoriaGastos','rendaMensal','nome_user'));
+        return view('app.gastos.gasto.index', compact('total','gastos', 'usuarios', 'categoriaGastos','rendaMensal','nome_user'));
     }
 
     /**
