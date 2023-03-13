@@ -271,7 +271,7 @@
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="card-edit m-0 me-2">Entradas Recentes:</h5>
       </div>
-      <d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     iv class="card-body">
+      <div class="card-body">
 
             @if (count($entradas) ==0)
               <p>Nenhuma entrada recente encontrada.<p><a href="/entradas">Clique aqui para adicionar!</a>
@@ -313,7 +313,7 @@
                   @endforeach
                 </table>
                 @endif
-            </div>
+          
         </div>
       </div>
     </div>

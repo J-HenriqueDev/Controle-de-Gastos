@@ -35,6 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'saldo' => 0
         ]);
 
         $categorias = array('Consumo de Água','Consumo de Energia','Despesa de internet','Pagamento de Fatura','Combustível / Meio de transporte','Gasto pessoal','Empréstimo');

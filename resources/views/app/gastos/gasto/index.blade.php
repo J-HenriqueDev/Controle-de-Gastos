@@ -184,7 +184,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <div class="row">
    <div class="col-12 mb-4">
      <div class="card h-100">
@@ -194,8 +194,8 @@
            <a class="nav-edit"">VALOR TOTAL: </a>
            <a class="p-2 success"> R$ {{number_format($total,2,",",".")}}</a>
 
-       </div>
-</div>
-</div>
+        </div>
+     </div>
+    </div>
 </div>
 @endsection

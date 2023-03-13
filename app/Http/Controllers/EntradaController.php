@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Entrada;
 use App\Models\Gasto;
-
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +59,8 @@ class EntradaController extends Controller
             'ano_da_entrada' => Carbon::parse($request->data_da_entrada)->format('Y'),
             'created_at' => Carbon::now()
         ]);
+        User::where('id', Auth::user()->id)->increment('saldo',$valor);
+        // User::increment('saldo', $valor);
 
         $noti = [
             'message' => 'Entrada inserida com sucesso!',
