@@ -37,9 +37,7 @@
 
 ## 2° aba       
 
-        npm install 
-        
-        npm run dev 
+        php artisan serve
 
 ## Populando a database e Apagando
             php artisan db:seed --class=GastoSeeder
