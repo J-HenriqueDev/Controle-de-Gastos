@@ -3,15 +3,15 @@
 @section('content')
 
 
-@if (count($usuarios) == 0 and count($categoriaGastos) == 0)
+@if (count($recebedores) == 0 and count($categoriaGastos) == 0)
 <div class="alert alert-danger alert-dismissible" role="alert">
     É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
-    <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
+    <a color: red, href="{{route('recebedor.index')}}">aqui</a> e uma categoria
     <a href="{{route('categoria-gastos.index')}}">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
-    @elseif (count($usuarios) != 0 and count($categoriaGastos) == 0)
+    @elseif (count($recebedores) != 0 and count($categoriaGastos) == 0)
     <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma categoria para prosseguir com o registro de saida. Clique
         <a href="{{route("categoria-gastos.index")}}"">aqui</a>.
@@ -19,10 +19,10 @@
         </button>
       </div>
 
-      @elseif (count($usuarios) == 0 and count($categoriaGastos) != 0)
+      @elseif (count($recebedores) == 0 and count($categoriaGastos) != 0)
       <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma recebedor para prosseguir com o registro de saida. Clique
-        <a href="{{route('usuario.index')}}">aqui</a>.
+        <a href="{{route('recebedor.index')}}">aqui</a>.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
       </div>
@@ -42,9 +42,9 @@
                                 <label for="usuario_id" class="form-label">Recebedor</label>
                                 <select id="usuario_id" name="usuario_id" class="form-select" placeholder="Escolha um recebedor...">
                                     <option value="0" selected>Todos</option>
-                                    @foreach ($usuarios as $usuario)
+                                    @foreach ($recebedores as $usuario)
                                     <option value="{{$usuario->id}}" {{$usuario->id == $usuario_slc ? 'selected' : ""}} id="usuario_{{$usuario->id}}">
-                                        {{$usuario->nome_usuario}}</option>
+                                        {{$usuario->nome_recebedor}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -154,7 +154,7 @@
                     @foreach ($gastos as $gasto)
                     <tbody class="table-border-bottom-0">
                       <tr>
-                          <td class="text-left col-2"><strong>{{$gasto->Usuario->nome_usuario}}</strong></td>
+                          <td class="text-left col-2"><strong>{{$gasto->Usuario->nome_recebedor}}</strong></td>
                           <td class="col-3">
                             <small class="text-muted">{{$gasto->descricao_gasto}}</small>
                           </td>

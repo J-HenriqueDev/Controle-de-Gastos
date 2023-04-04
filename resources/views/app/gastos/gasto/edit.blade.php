@@ -16,7 +16,7 @@
                                 <label for="usuario_id" class="form-label">Recebedor</label>
                                 <select id="usuario_id" name="usuario_id" class="form-select">
                                     @foreach ($usuarios as $usuario)
-                                        <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}" {{$usuario->id == $gasto->usuario_id ? 'selected' : '' }}>{{$usuario->nome_usuario}}</option>
+                                        <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}" {{$usuario->id == $gasto->usuario_id ? 'selected' : '' }}>{{$usuario->nome_recebedor}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -25,7 +25,7 @@ class GastoController extends Controller
         $nome_user = Auth::user()->name;
         $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->get();
         $total = $gastos->sum('valor_do_gasto');
-        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
+        $recebedores = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
@@ -36,7 +36,7 @@ class GastoController extends Controller
         $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
 
 
-        return view('app.gastos.gasto.index', compact('total','gastos', 'usuarios', 'categoriaGastos','rendaMensal','nome_user'));
+        return view('app.gastos.gasto.index', compact('total','gastos', 'recebedores', 'categoriaGastos','rendaMensal','nome_user'));
     }
 
     /**
@@ -60,7 +60,7 @@ class GastoController extends Controller
 
         Gasto::insert([
             'user_id' => Auth::user()->id,
-            'usuario_id' => $request->usuario_id,
+            'recebedor_id' => $request->usuario_id,
             'categoria_de_gastos_id' => $request->categoria_de_gastos_id,
             'descricao_gasto' => $request->descricao_gasto,
             'forma_de_pagamento' => $request->forma_de_pagamento,
@@ -90,7 +90,7 @@ class GastoController extends Controller
     public function edit(Gasto $gasto)
     {
         $nome_user = Auth::user()->name;
-        $usuarios = Recebedor::get();
+        $recebedores = Recebedor::get();
         $categoriaGastos = CategoriaGasto::get();
 
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
@@ -99,7 +99,7 @@ class GastoController extends Controller
         // Cálculo Renda Mensal
         $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
 
-        return view('app.gastos.gasto.edit', compact('nome_user','gasto', 'usuarios', 'categoriaGastos','rendaMensal'));
+        return view('app.gastos.gasto.edit', compact('nome_user','gasto', 'recebedores', 'categoriaGastos','rendaMensal'));
     }
 
     /**

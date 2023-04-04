@@ -57,7 +57,7 @@ class RelatorioController extends Controller
 
         $total = $gastos->sum('valor_do_gasto');
 
-        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
+        $recebedores = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         // Puxar o saldo do usuario no banco de dados
@@ -67,7 +67,7 @@ class RelatorioController extends Controller
         //
         $nome_user = Auth::user()->name;
 
-        return view('app.gastos.relatorio.index',compact('forma_pag','nome_user','gastos','usuarios','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final','total'));
+        return view('app.gastos.relatorio.index',compact('forma_pag','nome_user','gastos','recebedores','categoriaGastos','rendaMensal','usuario_slc','categoria_slc','data_inicio','data_final','total'));
     }
     /**
      * Show the form for creating a new resource.
@@ -77,7 +77,7 @@ class RelatorioController extends Controller
     public function export()
     {
         $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5, ['*'], 'gastos');
-        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
+        $recebedores = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         // Cálculo Renda Mensal
@@ -85,7 +85,7 @@ class RelatorioController extends Controller
         $data_atual = date('d_m_Y');
 
        return Excel::download(new RelatorioExport($gastos), 'Relatorio_'.$data_atual.'.xlsx');
-        // return view('app.gastos.relatorio.index',compact('usuarios','categoriaGastos','rendaMensal','usuario_slc',));
+        // return view('app.gastos.relatorio.index',compact('recebedores','categoriaGastos','rendaMensal','usuario_slc',));
         //
     }
     /**
@@ -95,7 +95,7 @@ class RelatorioController extends Controller
     public function relatorioentrada(Request $request)
     {
         $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5, ['*'], 'gastos');
-        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
+        $recebedores = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada');
 
@@ -106,7 +106,7 @@ class RelatorioController extends Controller
         $rendaMensal = $entradaMes - $gastoMes;
         //
 
-        return view('app.gastos.relatorio.index_entrada',compact('gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
+        return view('app.gastos.relatorio.index_entrada',compact('gastos','categoriaGastos','rendaMensal','entradas','dia','recebedores'));
     }
 
     /**

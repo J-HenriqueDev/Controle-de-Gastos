@@ -3,15 +3,15 @@
 @section('content')
 
 
-@if (count($usuarios) == 0 and count($categoriaGastos) == 0)
+@if (count($recebedores) == 0 and count($categoriaGastos) == 0)
 <div class="alert alert-danger alert-dismissible" role="alert">
     É necessário que você cadastre um recebedor e uma categoria para proseeguir! Você pode cadastrar um recebedor
-    <a color: red, href="{{route('usuario.index')}}">aqui</a> e uma categoria
+    <a color: red, href="{{route('recebedor.index')}}">aqui</a> e uma categoria
     <a href="/categoria-gastos">aqui</a>.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
-    @elseif (count($usuarios) != 0 and count($categoriaGastos) == 0)
+    @elseif (count($recebedores) != 0 and count($categoriaGastos) == 0)
     <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma categoria para prosseguir com o registro de saida. Clique
         <a href="/categoria-gastos">aqui</a>.
@@ -19,10 +19,10 @@
         </button>
       </div>
 
-      @elseif (count($usuarios) == 0 and count($categoriaGastos) != 0)
+      @elseif (count($recebedores) == 0 and count($categoriaGastos) != 0)
       <div class="alert alert-danger alert-dismissible" role="alert">
         Por favor crie uma recebedor para prosseguir com o registro de saida. Clique
-        <a href="/usuario">aqui</a>.
+        <a href="{{ route('recebedor.index') }}">aqui</a>.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
       </div>
@@ -43,9 +43,9 @@
                                 <label for="usuario_id" class="form-label">Recebedor</label>
                                 <select id="usuario_id" name="usuario_id" class="form-select" required autofocus>
                                     <option value="" disabled selected>Escolha um recebedor...</option>
-                                    @foreach ($usuarios as $usuario)
-                                    <option value="{{$usuario->id}}" id="usuario_{{$usuario->id}}">
-                                        {{$usuario->nome_usuario}}</option>
+                                    @foreach ($recebedores as $recebedor)
+                                    <option value="{{$recebedor->id}}" id="recebedor_{{$recebedor->id}}">
+                                        {{$recebedor->nome_recebedor}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -156,7 +156,7 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($gastos as $gasto)
                         <tr>
-                            <td>{{$gasto->usuario->nome_usuario}}</td>
+                            <td>{{$gasto->recebedor->nome_recebedor}}</td>
                             <td>{{$gasto->descricao_gasto}}</td>
                             <td>R$ {{number_format($gasto->valor_do_gasto,2,",",".")}}</td>
                             <td>{{Carbon\Carbon::parse($gasto->data_do_gasto)->format('d/m/Y')}}</td>
