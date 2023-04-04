@@ -6,7 +6,7 @@ use App\Exports\RelatorioExport;
 use App\Models\Entrada;
 use App\Models\Gasto;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Usuario;
+use App\Models\Recebedor;
 use App\Models\CategoriaGasto;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
@@ -57,7 +57,7 @@ class RelatorioController extends Controller
 
         $total = $gastos->sum('valor_do_gasto');
 
-        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
+        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         // Puxar o saldo do usuario no banco de dados
@@ -77,7 +77,7 @@ class RelatorioController extends Controller
     public function export()
     {
         $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5, ['*'], 'gastos');
-        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
+        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         // Cálculo Renda Mensal
@@ -95,7 +95,7 @@ class RelatorioController extends Controller
     public function relatorioentrada(Request $request)
     {
         $gastos= Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto')->paginate(5, ['*'], 'gastos');
-        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
+        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada');
 

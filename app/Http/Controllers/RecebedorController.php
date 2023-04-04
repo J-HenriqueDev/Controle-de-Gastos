@@ -13,7 +13,7 @@ use App\Models\Entrada;
 use App\Models\User;
 
 
-class UsuarioController extends Controller
+class RecebedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -49,7 +49,7 @@ class UsuarioController extends Controller
 
         Recebedor::insert([
             'user_id' => Auth::user()->id,
-            'nome_usuario' => $request->nome_usuario,
+            'nome_recebedor' => $request->nome_usuario,
             'created_at' => Carbon::now()
         ]);
 
@@ -86,14 +86,14 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, Recebedor $usuario)
     {
         $request->validate([
             'nome_usuario' => 'required'
         ]);
 
         Recebedor::findOrFail($usuario->id)->update([
-            'nome_usuario' => $request->nome_usuario,
+            'nome_recebedor' => $request->nome_usuario,
             'updated_at' => Carbon::now()
         ]);
 
@@ -111,7 +111,7 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(Recebedor $usuario)
     {
         $usuario->delete();
 

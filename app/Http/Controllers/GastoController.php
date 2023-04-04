@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Usuario;
+use App\Models\Recebedor;
 use App\Models\Gasto;
 use App\Models\CategoriaGasto;
 use App\Models\Entrada;
@@ -24,7 +25,7 @@ class GastoController extends Controller
         $nome_user = Auth::user()->name;
         $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->get();
         $total = $gastos->sum('valor_do_gasto');
-        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
+        $usuarios = Recebedor::where('user_id', Auth::user()->id)->orderBy('nome_recebedor', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
@@ -89,7 +90,7 @@ class GastoController extends Controller
     public function edit(Gasto $gasto)
     {
         $nome_user = Auth::user()->name;
-        $usuarios = Usuario::get();
+        $usuarios = Recebedor::get();
         $categoriaGastos = CategoriaGasto::get();
 
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
