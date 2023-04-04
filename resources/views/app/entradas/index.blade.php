@@ -118,7 +118,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="row">
    <div class="col-12 mb-4">
      <div class="card h-100">

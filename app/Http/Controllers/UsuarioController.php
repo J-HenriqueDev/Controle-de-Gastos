@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Gasto;
 use App\Models\Entrada;
+use App\Models\User;
+
 
 class UsuarioController extends Controller
 {
@@ -23,8 +25,9 @@ class UsuarioController extends Controller
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        // Cálculo Renda Mensal
-        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
+
+        // Puxar o saldo do usuario no banco de dados
+        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
 
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('created_at', 'ASC')->get();
         return view('app.usuario.index', compact('nome_user','usuarios','rendaMensal'));

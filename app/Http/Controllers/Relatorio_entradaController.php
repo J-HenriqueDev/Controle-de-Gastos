@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\CategoriaGasto;
 use App\Models\Entrada;
 use App\Models\Gasto;
+use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class Relatorio_entradaController extends Controller
@@ -44,14 +46,10 @@ class Relatorio_entradaController extends Controller
         $entradas = $entradas->get();
         $total = $entradas->sum('valor_da_entrada');
 
-        // Cálculo Renda Mensal
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
-        $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
-        $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
-        //
+        // Puxar o saldo do usuario no banco de dados
+        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
 
-        return view('app.gastos.relatorio.index_entrada',compact('total','forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));
+        return view('app.gastos.relatorio.index_entrada',compact('total','forma_pag','nome_user','forma_pag','data_inicio','data_final','gastos','categoriaGastos','rendaMensal','entradas','usuarios'));
 
     }
 }

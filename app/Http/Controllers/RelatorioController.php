@@ -8,8 +8,8 @@ use App\Models\Gasto;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 use App\Models\CategoriaGasto;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 use Illuminate\Http\Request;
 
@@ -60,11 +60,8 @@ class RelatorioController extends Controller
         $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
-          // Cálculo Renda Mensal
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
-        $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
-        $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
+        // Puxar o saldo do usuario no banco de dados
+        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
 
 
         //
@@ -84,11 +81,7 @@ class RelatorioController extends Controller
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
 
         // Cálculo Renda Mensal
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
-        $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
-        $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $rendaMensal = $entradaMes - $gastoMes;
-
+        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
         $data_atual = date('d_m_Y');
 
        return Excel::download(new RelatorioExport($gastos), 'Relatorio_'.$data_atual.'.xlsx');

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Usuario;
 use App\Models\Gasto;
 use App\Models\CategoriaGasto;
 use App\Models\Entrada;
 use App\Models\User;
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class GastoController extends Controller
+class EmprestarController extends Controller
 {
     /**
      * Display a listing of the resource.

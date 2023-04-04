@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Gasto;
+use App\Models\User;
 use App\Models\Entrada;
 
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,8 @@ class HomeController extends Controller
         $entradaAno = Entrada::where('user_id', Auth::user()->id)->where('ano_da_entrada', $ano)->sum('valor_da_entrada');
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada','DESC')->paginate(5, ['*'], 'entradas');
 
-        // Cálculo Renda Mensal
-        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
+        // Puxar o saldo do usuario no banco de dados
+        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
 
         if ($gastoMes and $entradaMes != 0)
             $porcentagem = ($gastoMes / $entradaMes) * 100;
