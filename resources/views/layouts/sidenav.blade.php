@@ -70,7 +70,7 @@
         </li>
 
         <li class="menu-item {{ Request::is('usuario') ? 'active': '' }}">
-            <a href="{{route('usuario.index')}}" class="menu-link">
+            <a href="{{route('recebedor.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Novo Recebedor</div>
             </a>

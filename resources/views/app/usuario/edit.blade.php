@@ -7,7 +7,7 @@
                 <<div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-edit m-0 me-2">Editando o usuário:  {{$usuario->nome_usuario}}</h5>
                   </div>
-                <form action="{{route('usuario.update', $usuario->id)}}" method="post">
+                <form action="{{route('recebedor.update', $usuario->id)}}" method="post">
                     @csrf
                     @method('PATCH')
 

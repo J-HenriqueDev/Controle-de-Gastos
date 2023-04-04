@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card mb-4">
 
-            <form action="{{route('usuario.store')}}" method="post">
+            <form action="{{route('recebedor.store')}}" method="post">
                 @csrf
 
                 <div class="card-body">
@@ -57,10 +57,10 @@
                                 <td>{{$usuario->nome_usuario}}</td>
                                 <td>{{Carbon\Carbon::parse($usuario->created_at)->format('d/m/Y')}}</td>
                                 <td class="d-flex justify-content-between text-center">
-                                    <a type="button" href="{{route('usuario.edit', $usuario->id)}}">
+                                    <a type="button" href="{{route('recebedor.edit', $usuario->id)}}">
                                         <i class="bx bx-edit text-success fs-3"></i>
                                     </a>
-                                    <form id="removeForm_{{$usuario->id}}" action="{{route('usuario.destroy', $usuario->id)}}" method="post">
+                                    <form id="removeForm_{{$usuario->id}}" action="{{route('recebedor.destroy', $usuario->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <a type="button" onclick="getElementById('removeForm_{{$usuario->id}}').submit()">

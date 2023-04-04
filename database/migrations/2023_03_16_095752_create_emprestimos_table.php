@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('recebedores')->onDelete('cascade');
 
             $table->unsignedBigInteger('categoria_de_gastos_id')->unsigned();
             $table->foreign('categoria_de_gastos_id')->references('id')->on('categoria_gastos')->onDelete('cascade');
