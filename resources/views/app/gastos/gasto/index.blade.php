@@ -70,7 +70,7 @@
                             <label for="valor" class="form-label">Valor Gasto</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text">R$</span>
-                                <input type="number" class="form-control" name="valor_do_gasto" id="valor" placeholder ="21.90" onkeyup="formataValor(this)" required>
+                                <input type="text" class="form-control" name="valor_do_gasto" id="valor" placeholder ="21.90" onkeypress="$(this).mask('R$ #.##0,00', {reverse: true});" >
                                 {{-- <input type="number" class="form-control" name="valor_do_gasto" id="valor" --}}
                                     {{-- placeholder="21,90" required> --}}
 
@@ -79,6 +79,24 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-sm">
+                            <label for="valor" class="form-label">Modo de Pagamento</label>
+                                <div class="form-group">
+                                    <select class="form-select" id="payment_method" name="payment_method">
+                                        <option value="1">À vista</option>
+                                            <option value="2">2x </option>
+                                            <option value="3">3x </option>
+                                            <option value="4">4x </option>
+                                            <option value="5">5x </option>
+                                            <option value="6">6x </option>
+                                            <option value="7">7x </option>
+                                            <option value="8">8x </option>
+                                            <option value="9">9x </option>
+                                            <option value="10">10x </option>
+                                    </select>
+                                </div>
+                            </div>
+
                         <div class="col-sm">
                             <label for="data" class="form-label">Data do Gasto</label>
                             <div class="input-group input-group-merge">

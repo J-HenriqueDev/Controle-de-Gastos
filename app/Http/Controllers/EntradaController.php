@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Models\Entrada;
-use App\Models\Gasto;
 use App\Models\User;
+use App\Models\Gasto;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +16,11 @@ class EntradaController extends Controller
      */
     public function Index() {
         $nome_user = Auth::user()->name;
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
+        $mes = date('m');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-
-        // Puxar o saldo do usuario no banco de dados
-        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
+        $numero = User::where('id', Auth::user()->id)->value('saldo');
+        $rendaMensal = number_format($numero,2,",",".");
 
         $entradas = Entrada::where('user_id', Auth::user()->id)->orderBy('data_da_entrada', 'DESC')->get();
         $total = $entradas->sum('valor_da_entrada');
@@ -60,7 +56,6 @@ class EntradaController extends Controller
             'created_at' => Carbon::now()
         ]);
         User::where('id', Auth::user()->id)->increment('saldo',$valor);
-        // User::increment('saldo', $valor);
 
         $noti = [
             'message' => 'Entrada inserida com sucesso!',
@@ -79,7 +74,7 @@ class EntradaController extends Controller
     public function edit(Entrada $entrada)
     {
         $nome_user = Auth::user()->name;
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
+        $mes = date('m');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
         // Cálculo Renda Mensal

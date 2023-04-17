@@ -84,7 +84,7 @@ class RelatorioController extends Controller
         $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
         $data_atual = date('d_m_Y');
 
-       return Excel::download(new RelatorioExport($gastos), 'Relatorio_'.$data_atual.'.xlsx');
+    //    return Excel::download(new RelatorioExport($gastos), 'Relatorio_'.$data_atual.'.xlsx');
         // return view('app.gastos.relatorio.index',compact('usuarios','categoriaGastos','rendaMensal','usuario_slc',));
         //
     }
@@ -103,7 +103,7 @@ class RelatorioController extends Controller
         $dia = date('d'); $mes = date('m'); $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        $rendaMensal = $entradaMes - $gastoMes;
+        $rendaMensal = User::where('id', Auth::user()->id)->value('saldo');
         //
 
         return view('app.gastos.relatorio.index_entrada',compact('gastos','categoriaGastos','rendaMensal','entradas','dia','usuarios'));

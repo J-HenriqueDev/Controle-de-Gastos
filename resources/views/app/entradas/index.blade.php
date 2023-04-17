@@ -1,43 +1,43 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card mb-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
 
-            <form action="{{route('entradas.store')}}" method="post">
-                @csrf
+                <form action="{{ route('entradas.store') }}" method="post">
+                    @csrf
 
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-sm-6">
-                            <label for="valor" class="form-label">Valor de Entrada</label>
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text">R$</span>
-                                <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder ="1.800" step="0.01" min="0.01" required autofocus>
-                                {{-- <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder="1.800" required> --}}
-                                @error('valor_da_entrada')
-                                    <small class="text-danger fw-bold">{{$message}}</small>
-                                @enderror
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="valor" class="form-label">Valor de Entrada</label>
+                                <div class="input-group input-group-merge">
+                                    <span class="input-group-text">R$</span>
+                                    <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder ="1.800" step="0.01" min="0.01" required autofocus>
+                                    {{-- <input type="number" class="form-control" name="valor_da_entrada" id="valor_da_entrada" placeholder="1.800" required> --}}
+                                    @error('valor_da_entrada')
+                                        <small class="text-danger fw-bold">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="data" class="form-label">Data da Entrada</label>
-                            <div class="input-group input-group-merge">
-                                <input type="date" class="form-control" name="data_da_entrada" id="data_da_entrada" value="<?php echo date('Y-m-d'); ?>" required>
+                            <div class="col-sm-6">
+                                <label for="data" class="form-label">Data da Entrada</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="date" class="form-control" name="data_da_entrada" id="data_da_entrada" value="{{ date('Y-m-d') }}" required>
 
-                                @error('data_da_entrada')
-                                <small class="text-danger fw-bold">{{$message}}</small>
-                                @enderror
+                                    @error('data_da_entrada')
+                                        <small class="text-danger fw-bold">{{ $message }}</small>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="descricao" class="form-label d-block">Forma de Pagamento</label>
-                            <div class="form-check form-check-inline mt-3">
-                                <input class="form-check-input" type="radio" name="forma_de_entrada" id="dinheiro"
-                                    value="1" checked>
-                                <label class="form-check-label" for="dinheiro">Dinheiro</label>
-                            </div>
+                            <div class="col-sm-6">
+                                <label for="descricao" class="form-label d-block">Forma de Pagamento</label>
+                                <div class="form-check form-check-inline mt-3">
+                                    <input class="form-check-input" type="radio" name="forma_de_entrada" id="dinheiro"
+                                           value="1" checked>
+                                    <label class="form-check-label" for="dinheiro">Dinheiro</label>
+                                </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="forma_de_entrada" id="transferencia_pix"
                                     value="2">

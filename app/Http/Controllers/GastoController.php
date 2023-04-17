@@ -3,47 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Entrada;
 use App\Models\Usuario;
 use App\Models\Gasto;
 use App\Models\CategoriaGasto;
-use App\Models\Entrada;
 use App\Models\User;
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class GastoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function Index() {
+    public function index()
+    {
         $nome_user = Auth::user()->name;
         $gastos = Gasto::where('user_id', Auth::user()->id)->orderBy('data_do_gasto', 'DESC')->get();
         $total = $gastos->sum('valor_do_gasto');
-        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
         $categoriaGastos = CategoriaGasto::where('user_id', Auth::user()->id)->orderBy('categoria_de_gastos', 'ASC')->get();
-
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
-        $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
-        $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-
-        // Puxar o saldo do usuario no banco de dados
-        $numero = User::where('id', Auth::user()->id)->value('saldo');$rendaMensal = number_format($numero,2,",",".");
-
-
-        return view('app.gastos.gasto.index', compact('total','gastos', 'usuarios', 'categoriaGastos','rendaMensal','nome_user'));
+        $usuarios = Usuario::where('user_id', Auth::user()->id)->orderBy('nome_usuario', 'ASC')->get();
+        $numero = User::where('id', Auth::user()->id)->value('saldo');
+        $rendaMensal = number_format($numero, 2, ",", ".");
+        return view('app.gastos.gasto.index', compact('total', 'gastos', 'categoriaGastos', 'rendaMensal', 'nome_user','usuarios'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -70,7 +51,8 @@ class GastoController extends Controller
             'ano_do_gasto' => Carbon::parse($request->data_do_gasto)->format('Y'),
             'created_at' => Carbon::now()
         ]);
-        User::where('id', Auth::user()->id)->decrement('saldo',$valor);
+
+        User::where('id', Auth::user()->id)->decrement('saldo', $valor);
 
         $noti = [
             'message' => 'Gasto inserido com sucesso!',
@@ -80,23 +62,17 @@ class GastoController extends Controller
         return redirect()->back()->with($noti);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gasto  $gasto
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Gasto $gasto)
     {
         $nome_user = Auth::user()->name;
-        $usuarios = Usuario::get();
         $categoriaGastos = CategoriaGasto::get();
-
-        $dia = date('d'); $mes = date('m'); $ano = date('Y');
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
         $gastoMes = Gasto::where('user_id', Auth::user()->id)->where('mes_do_gasto', $mes)->sum('valor_do_gasto');
         $entradaMes = Entrada::where('user_id', Auth::user()->id)->where('mes_da_entrada', $mes)->sum('valor_da_entrada');
-        // Cálculo Renda Mensal
-        $numero = $entradaMes - $gastoMes;$rendaMensal = number_format($numero,2,",",".");
+        $numero = User::where('id', Auth::user()->id)->value('saldo');
+        $rendaMensal = number_format($numero, 2, ",", ".");
 
         return view('app.gastos.gasto.edit', compact('nome_user','gasto', 'usuarios', 'categoriaGastos','rendaMensal'));
     }
