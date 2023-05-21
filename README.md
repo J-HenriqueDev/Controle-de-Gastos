@@ -41,6 +41,5 @@
 
 ## Populando a database e Apagando
             php artisan db:seed --class=GastoSeeder
-             DELETE FROM gastos WHERE `categoria_de_gastos_id` = 4;
 
 </p> 
